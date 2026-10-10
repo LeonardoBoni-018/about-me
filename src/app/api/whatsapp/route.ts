@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server"
+import { connection, NextResponse, type NextRequest } from "next/server"
 import { defaultLocale, hasLocale, type Locale } from "@/i18n/config"
 import en from "@/i18n/messages/en.json"
 import pt from "@/i18n/messages/pt.json"
@@ -26,6 +26,9 @@ const protectedHeaders = {
 }
 
 export async function GET(request: NextRequest) {
+  // Sempre em tempo de requisição. Sem isso, um build sem CONTACT_WHATSAPP devolvia 404 antes
+  // de tocar no request — e o Next pré-renderizava esse 404 como resposta estática.
+  await connection()
   const number = getWhatsAppNumber()
   if (!number) {
     return new NextResponse("Not found", { status: 404, headers: protectedHeaders })

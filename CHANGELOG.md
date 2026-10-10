@@ -35,6 +35,9 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Corrigido
 
+- O botão do WhatsApp sumia no deploy quando o build rodava sem `CONTACT_WHATSAPP`: a rota
+  `/api/whatsapp` era pré-renderizada como 404 estático. Agora roda sempre em tempo de
+  requisição, e o build avisa no log quando a variável falta.
 - Slugs de projeto inexistentes respondiam 200 ("soft 404"); agora respondem 404.
 - `favicon.ico` e `apple-icon` adicionados; o ícone foi redesenhado no estilo blueprint (o
   anterior ainda tinha o degradê da primeira versão).

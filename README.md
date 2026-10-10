@@ -92,5 +92,13 @@ docs/                    guias e ADRs
 ## Deploy (Vercel)
 
 1. Importe o repositório na Vercel.
-2. Configure as variáveis de ambiente: `NEXT_PUBLIC_SITE_URL`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` (remetente de um domínio verificado no Resend) e `CONTACT_WHATSAPP` (celular com DDD). Elas precisam existir **antes do build**: o número do WhatsApp é pré-renderizado.
-3. Faça o deploy. Sitemap, robots, OG images e `hreflang` são gerados automaticamente.
+2. Em **Settings → Environment Variables**, cadastre as variáveis do `.env.example` marcando
+   o ambiente **Production** (e **Preview**, se quiser testar em PRs): `NEXT_PUBLIC_SITE_URL`,
+   `CONTACT_WHATSAPP` (celular com DDD) e as do e-mail (ver `docs/conteudo.md`).
+3. **Faça um novo deploy depois de salvar as variáveis** (Deployments → ⋯ → Redeploy). A Vercel
+   só aplica variáveis em builds novos, e o número do WhatsApp é pré-renderizado no build: sem
+   isso, o botão continua escondido.
+4. Confira o log do build: se aparecer `[whatsapp] CONTACT_WHATSAPP ausente`, a variável não
+   chegou ao build.
+
+Sitemap, robots, OG images e `hreflang` são gerados automaticamente.
