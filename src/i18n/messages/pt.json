@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Leonardo Rodrigues Boni — desenvolvedor full stack (Java, Go, .NET)",
+    "description": "Sou Leonardo Rodrigues Boni, desenvolvedor full stack em Araçatuba-SP, com foco em APIs REST com Java/Spring Boot e Go. Percorra meu trabalho como uma requisição atravessando um sistema."
+  },
+  "a11y": {
+    "skipToContent": "Pular para o conteúdo",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "toggleTheme": "Alternar tema claro/escuro",
+    "switchLocale": "Mudar idioma",
+    "mainNav": "Navegação principal",
+    "rail": "Progresso da requisição pela página"
+  },
+  "nav": {
+    "about": "Sobre",
+    "stack": "Stack",
+    "experience": "Trajetória",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "hero": {
+    "status": "Aberto a novas oportunidades",
+    "ctaStart": "Iniciar a requisição",
+    "ctaContact": "Ir direto para a resposta",
+    "ctaCv": "Baixar currículo",
+    "diagramLabel": "Diagrama interativo da arquitetura com que trabalho",
+    "diagramHint": "explore os nós",
+    "traceTitle": "trace da sua visita",
+    "traceHint": "cada span é uma seção — clique para pular até ela"
+  },
+  "about": {
+    "title": "Quem responde a essa requisição",
+    "nowTitle": "o que estou fazendo agora",
+    "nowUpdated": "atualizado em",
+    "photoPlaceholder": "foto em breve",
+    "photoNote": "esse sou eu",
+    "coursesStat": "cursos e certificações"
+  },
+  "stack": {
+    "title": "O que eu sei — e como uma coisa puxa a outra",
+    "description": "Cada nó é uma tecnologia. O tamanho mostra quanto ela aparece no meu trabalho; as linhas ligam o que costumo usar junto.",
+    "hint": "Passe o mouse, toque ou navegue com Tab pelas tecnologias.",
+    "usedIn": "Aparece em",
+    "connections": "conexões",
+    "notUsed": "Ainda sem projeto publicado — estou estudando."
+  },
+  "experience": {
+    "title": "Histórico gravado",
+    "description": "Minha trajetória como um git log: cada emprego é um commit que mudou o que eu sei fazer.",
+    "present": "hoje",
+    "author": "Autor",
+    "date": "Data",
+    "educationBranch": "branch: estudos",
+    "coursesTitle": "cursos e certificações",
+    "coursesMore": "mais",
+    "coursesLess": "mostrar menos"
+  },
+  "projects": {
+    "title": "Jobs processados",
+    "description": "Cada projeto tem um estudo de caso com o problema, as decisões e o que deu certo (e o que eu faria diferente).",
+    "details": "Abrir estudo de caso",
+    "completed": "concluído",
+    "queue": "fila",
+    "trackLabel": "Fila de projetos — role ou deslize para avançar"
+  },
+  "project": {
+    "back": "Voltar para os projetos",
+    "problem": "O problema",
+    "solution": "O que eu fiz",
+    "architecture": "Como as peças conversam",
+    "endpoints": "Endpoints principais",
+    "results": "Resultados",
+    "stack": "Feito com",
+    "repository": "Ver o código",
+    "demo": "Demo / docs",
+    "method": "Método",
+    "path": "Rota",
+    "endpointDescription": "O que faz",
+    "next": "Próximo job"
+  },
+  "contact": {
+    "title": "Monte sua requisição",
+    "description": "Preencha os campos e veja a requisição sendo montada ao lado. Quando enviar, a resposta chega aqui mesmo — e no meu e-mail.",
+    "form": {
+      "name": "Seu nome",
+      "namePlaceholder": "Como posso te chamar?",
+      "email": "Seu e-mail",
+      "emailPlaceholder": "voce@empresa.com",
+      "message": "Mensagem",
+      "messagePlaceholder": "Conte um pouco sobre a ideia, a vaga ou a dúvida…",
+      "submit": "Enviar requisição",
+      "sending": "Enviando…"
+    },
+    "errors": {
+      "nameRequired": "Preciso do seu nome (pelo menos 2 letras).",
+      "emailInvalid": "Esse e-mail parece incompleto.",
+      "messageShort": "Escreve mais um pouquinho — pelo menos 10 caracteres.",
+      "messageLong": "Ficou longo! O limite é de 2000 caracteres."
+    },
+    "response": {
+      "label": "Resposta",
+      "idle": "A resposta aparece aqui depois do envio.",
+      "waiting": "aguardando resposta",
+      "success": "Recebido! Costumo responder em até dois dias.",
+      "rateLimited": "Muitas tentativas seguidas. Tenta de novo em alguns minutos?",
+      "invalid": "Alguns campos precisam de ajuste.",
+      "error": "Não consegui enviar agora. Me manda direto por e-mail?"
+    },
+    "previewLabel": "Requisição sendo montada",
+    "copyEmail": "copiar",
+    "copied": "E-mail copiado!",
+    "elsewhere": "Ou fale direto",
+    "whatsapp": "Conversar no WhatsApp",
+    "whatsappHint": "abre em uma nova aba, com uma mensagem pronta",
+    "whatsappMessage": "Olá, Leonardo! Vi seu portfólio e gostaria de conversar."
+  },
+  "footer": {
+    "closing": "Conexão encerrada. Obrigado pela visita!",
+    "builtWith": "Feito à mão com Next.js, Motion e muito café.",
+    "rights": "Todos os direitos reservados.",
+    "backToTop": "nova requisição"
+  },
+  "notFound": {
+    "title": "Essa rota não existe.",
+    "description": "A requisição se perdeu no caminho — talvez a página tenha mudado de lugar, ou nunca tenha existido.",
+    "back": "Voltar para o início",
+    "note": "acontece com os melhores"
+  }
+}

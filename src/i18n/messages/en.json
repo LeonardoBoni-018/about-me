@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Leonardo Rodrigues Boni — full stack developer (Java, Go, .NET)",
+    "description": "I'm Leonardo Rodrigues Boni, a full stack developer from Araçatuba, Brazil, focused on REST APIs with Java/Spring Boot and Go. Walk through my work like a request travelling through a system."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle light/dark theme",
+    "switchLocale": "Change language",
+    "mainNav": "Main navigation",
+    "rail": "Request progress through the page"
+  },
+  "nav": {
+    "about": "About",
+    "stack": "Stack",
+    "experience": "Journey",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "status": "Open to new opportunities",
+    "ctaStart": "Start the request",
+    "ctaContact": "Skip to the response",
+    "ctaCv": "Download résumé",
+    "diagramLabel": "Interactive diagram of the architecture I work with",
+    "diagramHint": "explore the nodes",
+    "traceTitle": "trace of your visit",
+    "traceHint": "each span is a section — click to jump to it"
+  },
+  "about": {
+    "title": "Who's answering this request",
+    "nowTitle": "what I'm doing now",
+    "nowUpdated": "updated",
+    "photoPlaceholder": "photo coming soon",
+    "photoNote": "that's me",
+    "coursesStat": "courses & certificates"
+  },
+  "stack": {
+    "title": "What I know — and how one thing leads to another",
+    "description": "Each node is a technology. Its size shows how often it shows up in my work; the lines connect what I usually use together.",
+    "hint": "Hover, tap or Tab through the technologies.",
+    "usedIn": "Shows up in",
+    "connections": "connections",
+    "notUsed": "No published project yet — currently learning."
+  },
+  "experience": {
+    "title": "Committed history",
+    "description": "My journey as a git log: each job is a commit that changed what I know how to do.",
+    "present": "now",
+    "author": "Author",
+    "date": "Date",
+    "educationBranch": "branch: studies",
+    "coursesTitle": "courses & certificates",
+    "coursesMore": "more",
+    "coursesLess": "show less"
+  },
+  "projects": {
+    "title": "Processed jobs",
+    "description": "Each project has a case study with the problem, the decisions, what worked (and what I'd do differently).",
+    "details": "Open case study",
+    "completed": "completed",
+    "queue": "queue",
+    "trackLabel": "Project queue — scroll or swipe to advance"
+  },
+  "project": {
+    "back": "Back to projects",
+    "problem": "The problem",
+    "solution": "What I did",
+    "architecture": "How the pieces talk",
+    "endpoints": "Key endpoints",
+    "results": "Results",
+    "stack": "Built with",
+    "repository": "See the code",
+    "demo": "Demo / docs",
+    "method": "Method",
+    "path": "Path",
+    "endpointDescription": "What it does",
+    "next": "Next job"
+  },
+  "contact": {
+    "title": "Build your request",
+    "description": "Fill in the fields and watch the request being built next to them. When you send it, the response shows up right here — and in my inbox.",
+    "form": {
+      "name": "Your name",
+      "namePlaceholder": "What should I call you?",
+      "email": "Your email",
+      "emailPlaceholder": "you@company.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell me a bit about the idea, the role or the question…",
+      "submit": "Send request",
+      "sending": "Sending…"
+    },
+    "errors": {
+      "nameRequired": "I need your name (at least 2 letters).",
+      "emailInvalid": "That email looks incomplete.",
+      "messageShort": "Write a little more — at least 10 characters.",
+      "messageLong": "That's long! The limit is 2000 characters."
+    },
+    "response": {
+      "label": "Response",
+      "idle": "The response shows up here after you send it.",
+      "waiting": "waiting for response",
+      "success": "Received! I usually reply within two days.",
+      "rateLimited": "Too many attempts in a row. Try again in a few minutes?",
+      "invalid": "Some fields need a tweak.",
+      "error": "Couldn't send it right now. Mind emailing me directly?"
+    },
+    "previewLabel": "Request being built",
+    "copyEmail": "copy",
+    "copied": "Email copied!",
+    "elsewhere": "Or reach out directly",
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappHint": "opens in a new tab with a ready-made message",
+    "whatsappMessage": "Hi Leonardo! I saw your portfolio and would like to talk."
+  },
+  "footer": {
+    "closing": "Connection closed. Thanks for visiting!",
+    "builtWith": "Handmade with Next.js, Motion and lots of coffee.",
+    "rights": "All rights reserved.",
+    "backToTop": "new request"
+  },
+  "notFound": {
+    "title": "This route doesn't exist.",
+    "description": "The request got lost on the way — maybe the page moved, or it never existed.",
+    "back": "Back to home",
+    "note": "happens to the best of us"
+  }
+}
