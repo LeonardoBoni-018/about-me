@@ -112,9 +112,13 @@
     "copyEmail": "copy",
     "copied": "Email copied!",
     "elsewhere": "Or reach out directly",
+    "emailCta": "Send me an email",
     "whatsapp": "Chat on WhatsApp",
     "whatsappHint": "opens in a new tab with a ready-made message",
     "whatsappMessage": "Hi Leonardo! I saw your portfolio and would like to talk.",
+    "linkedinCta": "See my LinkedIn",
+    "githubCta": "See my code on GitHub",
+    "newTab": "opens in a new tab",
     "confirmation": {
       "subject": "Got your message — Leonardo Boni",
       "body": "Hi!\n\nThanks for reaching out through my portfolio. Your message arrived and I'll get back to you as soon as I can — usually within two days.\n\nIf you'd like to add anything, just reply to this email.\n\nLeonardo Rodrigues Boni\nBackend engineer · Java & Go\n{site}\n\n—\nYou're receiving this because this address was entered in the contact form at {site}. If that wasn't you, feel free to ignore it."

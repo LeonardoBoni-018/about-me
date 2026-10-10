@@ -112,9 +112,13 @@
     "copyEmail": "copiar",
     "copied": "E-mail copiado!",
     "elsewhere": "Ou fale direto",
+    "emailCta": "Mandar um e-mail",
     "whatsapp": "Conversar no WhatsApp",
     "whatsappHint": "abre em uma nova aba, com uma mensagem pronta",
     "whatsappMessage": "Olá, Leonardo! Vi seu portfólio e gostaria de conversar.",
+    "linkedinCta": "Ver perfil no LinkedIn",
+    "githubCta": "Ver código no GitHub",
+    "newTab": "abre em uma nova aba",
     "confirmation": {
       "subject": "Recebi sua mensagem — Leonardo Boni",
       "body": "Olá!\n\nObrigado por escrever pelo meu portfólio. Sua mensagem chegou e eu respondo assim que puder — costumo levar até dois dias.\n\nSe quiser acrescentar alguma coisa, é só responder este e-mail.\n\nLeonardo Rodrigues Boni\nEngenheiro backend · Java & Go\n{site}\n\n—\nVocê recebeu este e-mail porque este endereço foi informado no formulário de contato de {site}. Se não foi você, pode ignorar."

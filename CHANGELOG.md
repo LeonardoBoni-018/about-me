@@ -16,6 +16,8 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Alterado
 
+- Contato com os quatro canais (e-mail, WhatsApp, LinkedIn e GitHub) no mesmo formato: cartão
+  clicável com ícone, ação e endereço. O rodapé também ganhou ícones.
 - Novo conceito "ciclo de vida de uma requisição": a página é percorrida como uma requisição
   atravessando um sistema, com identidade visual de blueprint
   ([ADR 0004](docs/adr/0004-conceito-ciclo-de-vida-da-requisicao.md)).

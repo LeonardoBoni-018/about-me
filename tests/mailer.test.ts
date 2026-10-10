@@ -1,7 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const sendMail = vi.fn()
-const createTransport = vi.fn((_options: unknown) => ({ sendMail }))
+const createTransport = vi.fn<(options: unknown) => { sendMail: typeof sendMail }>(
+  () => ({ sendMail })
+)
 const resendSend = vi.fn()
 
 vi.mock("server-only", () => ({}))

@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache"
+import { Mail } from "lucide-react"
 import { totalLatency } from "@/components/layout/nav-items"
+import { GithubIcon, LinkedinIcon } from "@/components/shared/brand-icons"
 import { profile } from "@/content/profile"
 import type { Dictionary } from "@/i18n/dictionaries"
 import { shortHash } from "@/lib/hash"
@@ -14,9 +16,9 @@ async function getCurrentYear() {
 export async function SiteFooter({ dict }: { dict: Dictionary["footer"] }) {
   const year = await getCurrentYear()
   const links = [
-    { href: profile.socials.github, label: "GitHub" },
-    { href: profile.socials.linkedin, label: "LinkedIn" },
-    { href: `mailto:${profile.email}`, label: "E-mail" },
+    { href: profile.socials.github, label: "GitHub", Icon: GithubIcon },
+    { href: profile.socials.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
+    { href: `mailto:${profile.email}`, label: "E-mail", Icon: Mail },
   ]
 
   return (
@@ -34,15 +36,19 @@ export async function SiteFooter({ dict }: { dict: Dictionary["footer"] }) {
             <p className="mt-3 text-muted-foreground">{dict.builtWith}</p>
           </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm sm:flex-col sm:items-end">
-            {links.map(({ href, label }) => (
+            {links.map(({ href, label, Icon }) => (
               <li key={label}>
                 <a
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="link-underline"
+                  className="inline-flex items-center gap-2"
                 >
-                  {label}
+                  <Icon
+                    aria-hidden="true"
+                    className="size-4 shrink-0 text-muted-foreground"
+                  />
+                  <span className="link-underline">{label}</span>
                 </a>
               </li>
             ))}

@@ -296,6 +296,30 @@ test.describe("responsividade", () => {
   }
 })
 
+test("canais de contato: e-mail, LinkedIn e GitHub com ícone e link certo", async ({
+  page,
+}) => {
+  await gotoReady(page, "/pt#contact")
+  const contact = page.locator("#contact")
+  const channels = [
+    { name: /Mandar um e-mail/, href: /^mailto:/ },
+    { name: /Ver perfil no LinkedIn/, href: /linkedin\.com\/in\// },
+    { name: /Ver código no GitHub/, href: /github\.com\/LeonardoBoni-018/ },
+  ]
+  for (const { name, href } of channels) {
+    const link = contact.getByRole("link", { name })
+    await expect(link).toHaveAttribute("href", href)
+    // O ícone fica no mesmo cartão do link, escondido de leitores de tela.
+    await expect(
+      link.locator("xpath=..").locator("svg[aria-hidden='true']").first()
+    ).toBeVisible()
+  }
+  await expect(contact.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute(
+    "target",
+    "_blank"
+  )
+})
+
 test.describe("WhatsApp", () => {
   test("botão mostra o número e abre o WhatsApp em nova aba", async ({ page }) => {
     await gotoReady(page, "/pt#contact")
