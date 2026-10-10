@@ -44,8 +44,13 @@ flowchart LR
 
 `contact-form.tsx` (cliente: React Hook Form + Zod) → `sendContact` em `src/app/actions/contact.ts`
 (servidor): revalida com o mesmo schema (`src/lib/schemas.ts`), descarta bots pelo honeypot,
-aplica rate limit em memória (3 envios/IP/10 min) e envia pelo Resend.
-Sem `RESEND_API_KEY`, em desenvolvimento a mensagem só é registrada no terminal.
+aplica rate limit em memória (3 envios/IP/10 min) e envia dois e-mails por `src/lib/mailer.ts`
+(SMTP via nodemailer, ou Resend): o aviso para o dono (`replyTo` = visitante) e uma
+confirmação para o visitante, no idioma da página (textos em `contact.confirmation`, montados em
+`src/lib/contact-mail.ts`). A confirmação não repete nada do que foi digitado e é limitada a
+2 por endereço/hora, para o formulário não virar ferramenta de spam; se ela falhar, o envio
+continua valendo. Sem provedor configurado, em desenvolvimento a mensagem só é registrada no
+terminal e em produção a resposta é 503.
 
 ## Conceito e componentes
 

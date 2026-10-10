@@ -9,7 +9,7 @@ Portfólio pessoal de um engenheiro backend (Java/Spring Boot e Go), que se perc
 - Tipografia: **Bricolage Grotesque**, **IBM Plex Sans/Mono** e **Caveat** (via `next/font`)
 - **Motion** (`motion/react`, carregado sob demanda via `LazyMotion`) para animações sutis
 - i18n nativo com `next/root-params` (rotas `/pt` e `/en`) + `proxy.ts` para detectar o idioma
-- Formulário: **React Hook Form + Zod** + Server Action + **Resend**
+- Formulário: **React Hook Form + Zod** + Server Action + **SMTP (nodemailer)** ou **Resend**
 - Testes: **Vitest + Testing Library** (unitários) e **Playwright** (E2E, desktop e mobile)
 
 ## Rodando localmente
@@ -20,7 +20,8 @@ cp .env.example .env.local   # opcional: só é necessário para enviar e-mails
 npm run dev                  # http://localhost:3000
 ```
 
-Sem `RESEND_API_KEY`, o formulário em `npm run dev` apenas registra a mensagem no terminal.
+Sem e-mail configurado (SMTP ou Resend), o formulário em `npm run dev` apenas registra a
+mensagem no terminal.
 
 ## Scripts
 
@@ -69,7 +70,7 @@ O projeto traz skills em `.claude/skills/` que guiam o desenvolvimento assistido
 src/
   app/
     [locale]/            layout raiz por idioma, home, projects/[slug], not-found, OG image
-    actions/contact.ts   Server Action do formulário (Zod, honeypot, rate limit, Resend)
+    actions/contact.ts   Server Action do formulário (Zod, honeypot, rate limit, e-mail)
     global-not-found.tsx 404 para URLs fora de qualquer rota
     sitemap.ts, robots.ts, icon.svg, globals.css (tokens de tema)
   components/

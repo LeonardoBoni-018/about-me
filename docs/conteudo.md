@@ -77,6 +77,37 @@ Como funciona:
   requisições por IP.
 - Sem a variável, o botão simplesmente não aparece.
 
+## E-mail do formulário de contato
+
+Cada envio gera dois e-mails: o aviso para você (é só clicar em "Responder" para falar com quem
+escreveu) e uma confirmação automática para o visitante, no idioma da página. Configure as
+variáveis em `.env.local` e, no deploy, em **Vercel → Settings → Environment Variables**
+(depois, faça um novo deploy).
+
+**Gmail (recomendado — não precisa de domínio próprio)**
+
+1. Ative a verificação em duas etapas na conta Google.
+2. Crie uma senha de app em <https://myaccount.google.com/apppasswords> (16 letras).
+3. Defina:
+
+   ```bash
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=465
+   SMTP_USER=seu-email@gmail.com
+   SMTP_PASS=senha-de-app-sem-espacos
+   CONTACT_TO_EMAIL=onde-quer-receber@exemplo.com   # opcional; padrão = SMTP_USER
+   ```
+
+O remetente é sempre a conta do `SMTP_USER` (o Gmail não deixa enviar em nome de outro
+endereço). Limite do Gmail: ~500 e-mails por dia — de sobra para um portfólio.
+
+**Resend (alternativa)**: `RESEND_API_KEY` + `CONTACT_TO_EMAIL`. Sem domínio verificado no
+Resend, ele só entrega no e-mail da própria conta Resend: o aviso chega se `CONTACT_TO_EMAIL`
+for esse endereço, mas a confirmação ao visitante é recusada (o envio continua valendo).
+
+Textos da confirmação: `contact.confirmation` em `pt.json`/`en.json` (`{site}` vira a URL do
+site). Erros de envio aparecem no log da função na Vercel com o prefixo `[contact]`.
+
 ## Adicionar um curso ou certificação — `src/content/courses.ts`
 
 Inclua `{ title, provider, date: "AAAA-MM", hours? }` mantendo a lista do mais recente para o

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import type { Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/dictionaries"
 import { useHydrated } from "@/hooks/use-hydrated"
 import { jsonValue, statusFor, type ContactOutcome } from "@/lib/http"
@@ -24,6 +25,8 @@ const field =
 interface Response {
   outcome: ContactOutcome
   ms: number
+  /** Só no sucesso: se a confirmação foi para o e-mail de quem escreveu. */
+  confirmation?: boolean
   fieldErrors?: Partial<Record<keyof ContactInput, string>>
 }
 
@@ -31,7 +34,13 @@ interface Response {
  * Formulário de contato como um console de API: ao digitar, a requisição POST é montada ao
  * lado; ao enviar, a resposta aparece com o status HTTP correspondente.
  */
-export function ContactForm({ dict }: { dict: Dictionary["contact"] }) {
+export function ContactForm({
+  locale,
+  dict,
+}: {
+  locale: Locale
+  dict: Dictionary["contact"]
+}) {
   const [pending, startTransition] = useTransition()
   // Antes da hidratação o formulário não tem onSubmit: um clique faria um envio nativo (GET),
   // recarregando a página com e-mail e mensagem na URL. O botão só habilita depois.
@@ -70,10 +79,10 @@ export function ContactForm({ dict }: { dict: Dictionary["contact"] }) {
   function onSubmit(data: ContactInput) {
     startTransition(async () => {
       const started = performance.now()
-      const result = await sendContact(data)
+      const result = await sendContact(data, locale)
       const ms = Math.round(performance.now() - started)
       if (result.ok) {
-        setResponse({ outcome: "ok", ms })
+        setResponse({ outcome: "ok", ms, confirmation: result.confirmation })
         reset()
       } else {
         setResponse({ outcome: result.error, ms })
@@ -273,7 +282,10 @@ function ResponseView({
   const status = statusFor(response.outcome)
   const ok = response.outcome === "ok"
   const messages: Record<ContactOutcome, string> = {
-    ok: dict.response.success,
+    ok:
+      response.confirmation === false
+        ? dict.response.successNoCopy
+        : dict.response.success,
     invalid: dict.response.invalid,
     rateLimited: dict.response.rateLimited,
     error: dict.response.error,

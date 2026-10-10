@@ -22,6 +22,9 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Adicionado
 
+- Formulário de contato envia por SMTP (ex.: Gmail com senha de app), além do Resend, e
+  manda uma confirmação automática para quem escreveu, no idioma da página. O console mostra
+  se a confirmação saiu.
 - Botão "Conversar no WhatsApp" no contato, com mensagem pronta no idioma da página. O número
   vem de variável de ambiente (fora do repositório) e o link passa por um redirecionamento sem
   cache, sem indexação e com limite por IP.
@@ -40,6 +43,7 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
   requisição, e o build avisa no log quando a variável falta.
 - Canonical, `og:url` e sitemap apontavam para `http://localhost:3000` no deploy sem
   `NEXT_PUBLIC_SITE_URL`; agora usam o domínio de produção que a Vercel informa no build.
+- Erros de envio do formulário agora indicam no log qual provedor falhou e por quê.
 - Slugs de projeto inexistentes respondiam 200 ("soft 404"); agora respondem 404.
 - `favicon.ico` e `apple-icon` adicionados; o ícone foi redesenhado no estilo blueprint (o
   anterior ainda tinha o degradê da primeira versão).

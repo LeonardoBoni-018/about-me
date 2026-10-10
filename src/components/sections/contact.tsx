@@ -22,7 +22,7 @@ export function Contact({
   return (
     <SystemSection id="contact" title={dict.title} description={dict.description}>
       <Reveal>
-        <ContactForm dict={dict} />
+        <ContactForm locale={locale} dict={dict} />
       </Reveal>
 
       <Reveal className="mt-12 flex flex-col gap-4 border-t border-dashed pt-8 sm:flex-row sm:items-center sm:justify-between">

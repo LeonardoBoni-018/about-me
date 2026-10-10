@@ -102,7 +102,8 @@
       "label": "Resposta",
       "idle": "A resposta aparece aqui depois do envio.",
       "waiting": "aguardando resposta",
-      "success": "Recebido! Costumo responder em até dois dias.",
+      "success": "Recebido! Mandei uma confirmação para o seu e-mail — costumo responder em até dois dias.",
+      "successNoCopy": "Recebido! Costumo responder em até dois dias.",
       "rateLimited": "Muitas tentativas seguidas. Tenta de novo em alguns minutos?",
       "invalid": "Alguns campos precisam de ajuste.",
       "error": "Não consegui enviar agora. Me manda direto por e-mail?"
@@ -113,7 +114,11 @@
     "elsewhere": "Ou fale direto",
     "whatsapp": "Conversar no WhatsApp",
     "whatsappHint": "abre em uma nova aba, com uma mensagem pronta",
-    "whatsappMessage": "Olá, Leonardo! Vi seu portfólio e gostaria de conversar."
+    "whatsappMessage": "Olá, Leonardo! Vi seu portfólio e gostaria de conversar.",
+    "confirmation": {
+      "subject": "Recebi sua mensagem — Leonardo Boni",
+      "body": "Olá!\n\nObrigado por escrever pelo meu portfólio. Sua mensagem chegou e eu respondo assim que puder — costumo levar até dois dias.\n\nSe quiser acrescentar alguma coisa, é só responder este e-mail.\n\nLeonardo Rodrigues Boni\nEngenheiro backend · Java & Go\n{site}\n\n—\nVocê recebeu este e-mail porque este endereço foi informado no formulário de contato de {site}. Se não foi você, pode ignorar."
+    }
   },
   "footer": {
     "closing": "Conexão encerrada. Obrigado pela visita!",
