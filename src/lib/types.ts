@@ -133,10 +133,17 @@ export interface SkillGroup {
   note: Localized
 }
 
+export type CourseArea =
+  "programming" | "frontend" | "backend" | "data" | "ai" | "infra" | "language"
+
 export interface Course {
   title: string
   provider: string
   /** Mês de conclusão, formato "AAAA-MM". */
   date: string
   hours?: number
+  /** Área do conhecimento — vira o filtro da seção de certificados. */
+  area: CourseArea
+  /** Aparece em destaque, como certificado grande, no topo da seção. */
+  featured?: boolean
 }

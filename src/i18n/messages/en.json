@@ -16,6 +16,7 @@
     "about": "About",
     "stack": "Stack",
     "experience": "Journey",
+    "certificates": "Certificates",
     "projects": "Projects",
     "interfaces": "Front-end",
     "contact": "Contact"
@@ -52,10 +53,34 @@
     "present": "now",
     "author": "Author",
     "date": "Date",
-    "educationBranch": "branch: studies",
-    "coursesTitle": "courses & certificates",
-    "coursesMore": "more",
-    "coursesLess": "show less"
+    "educationBranch": "branch: studies"
+  },
+  "certificates": {
+    "title": "Verified certificates",
+    "description": "What I've studied beyond work and college, read as a certificate chain: who issued it, when, and how many hours it took.",
+    "stats": {
+      "count": "certificates",
+      "hours": "hours of study",
+      "issuers": "issuers"
+    },
+    "issuer": "Issuer",
+    "issued": "Issued",
+    "load": "Workload",
+    "area": "Area",
+    "pending": "verifying…",
+    "valid": "✓ valid",
+    "listTitle": "all certificates",
+    "filter": "Filter by area",
+    "all": "all",
+    "areas": {
+      "programming": "programming",
+      "frontend": "front-end",
+      "backend": "back-end",
+      "data": "data",
+      "ai": "AI",
+      "infra": "infra",
+      "language": "languages"
+    }
   },
   "projects": {
     "title": "Processed jobs",

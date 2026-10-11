@@ -1,4 +1,5 @@
 import { About } from "@/components/sections/about"
+import { Certificates } from "@/components/sections/certificates"
 import { Contact } from "@/components/sections/contact"
 import { Experience } from "@/components/sections/experience"
 import { Hero } from "@/components/sections/hero"
@@ -57,6 +58,7 @@ export default async function HomePage() {
       <About locale={locale} dict={dict.about} />
       <Stack locale={locale} dict={dict.stack} />
       <Experience locale={locale} dict={dict.experience} />
+      <Certificates locale={locale} dict={dict.certificates} />
       <Projects locale={locale} dict={dict.projects} />
       <Interfaces locale={locale} dict={dict.interfaces} />
       <Contact locale={locale} dict={dict.contact} />

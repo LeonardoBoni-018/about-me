@@ -10,15 +10,16 @@ description: Guia de design e desenvolvimento front-end deste portfólio (concei
 O site é **um sistema backend que o visitante percorre rolando a página**. Cada seção é um salto
 (hop) de uma requisição, e as animações representam fluxo de dados de verdade:
 
-| Seção        | Hop        | Span (rastreamento)  | Interação principal                                   |
-| ------------ | ---------- | -------------------- | ----------------------------------------------------- |
-| Hero         | `client`   | —                    | diagrama de arquitetura vivo + trace waterfall        |
-| `about`      | `gateway`  | `identity.resolve()` | texto que acende com o scroll, `GET /now`             |
-| `stack`      | `service`  | `knowledge.query()`  | grafo de conhecimento interativo (hover/foco)         |
-| `experience` | `database` | `history.load()`     | trajetória como `git log`, linha desenhada no scroll  |
-| `projects`   | `workers`  | `jobs.process()`     | trilho horizontal guiado pelo scroll, cards 3D        |
-| `interfaces` | `edge`     | `ui.render()`        | fronts: screenshots reais ou wireframe que se pinta   |
-| `contact`    | `response` | `response.write()`   | formulário que monta a requisição e mostra a resposta |
+| Seção          | Hop        | Span (rastreamento)  | Interação principal                                   |
+| -------------- | ---------- | -------------------- | ----------------------------------------------------- |
+| Hero           | `client`   | —                    | diagrama de arquitetura vivo + trace waterfall        |
+| `about`        | `gateway`  | `identity.resolve()` | texto que acende com o scroll, `GET /now`             |
+| `stack`        | `service`  | `knowledge.query()`  | grafo de conhecimento interativo (hover/foco)         |
+| `experience`   | `database` | `history.load()`     | trajetória como `git log`, linha desenhada no scroll  |
+| `certificates` | `vault`    | `certs.verify()`     | certificados X.509 que se verificam + lista filtrável |
+| `projects`     | `workers`  | `jobs.process()`     | trilho horizontal guiado pelo scroll, cards 3D        |
+| `interfaces`   | `edge`     | `ui.render()`        | fronts: screenshots reais ou wireframe que se pinta   |
+| `contact`      | `response` | `response.write()`   | formulário que monta a requisição e mostra a resposta |
 
 A configuração dos hops fica em `src/components/layout/nav-items.ts`. O trilho de requisição
 (`RequestRail`) acompanha o scroll com um pacote laranja.

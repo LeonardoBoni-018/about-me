@@ -1,84 +1,105 @@
 import type { Course } from "@/lib/types"
 
 // Fonte: currículo (out/2026). Mais recentes primeiro.
+// `featured` = certificados grandes no topo da seção (maior carga ou mais relevantes para vagas).
 export const courses: Course[] = [
   {
     title: "Fundamentos de IA Generativa — Google Cloud",
     provider: "SENAI",
     date: "2026-04",
+    area: "ai",
   },
   {
     title: "ChatGPT: otimizando a qualidade dos resultados",
     provider: "Alura",
     date: "2026-04",
+    area: "ai",
   },
   {
     title: "Engenharia de Prompt: criando prompts eficazes para IA Generativa",
     provider: "Alura",
     date: "2026-04",
+    area: "ai",
   },
   {
     title: "IA: explorando o potencial da inteligência artificial generativa",
     provider: "Alura",
     date: "2026-04",
+    area: "ai",
   },
   {
     title: "Trilha de Conhecimento Banco de Dados",
     provider: "Fundação Bradesco",
     date: "2026-02",
     hours: 38,
+    area: "data",
+    featured: true,
   },
   {
     title: "Prompting Responsável: maximizar IA no seu negócio",
     provider: "Santander Open Academy",
     date: "2026-02",
+    area: "ai",
   },
   {
     title: "EF SET English Certificate — 59/100 (B2)",
     provider: "EF SET",
     date: "2025-12",
+    area: "language",
+    featured: true,
   },
   {
     title: "Introduction to IoT",
     provider: "Cisco Networking Academy",
     date: "2024-11",
     hours: 8,
+    area: "infra",
   },
   {
     title: "Curso Node.js",
     provider: "Victor Lima — Ciência da Computação",
     date: "2024-10",
     hours: 40,
+    area: "backend",
+    featured: true,
   },
   {
     title: "Front End Development Libraries",
     provider: "freeCodeCamp",
     date: "2024-09",
     hours: 300,
+    area: "frontend",
+    featured: true,
   },
   {
     title: "Formação em Front-end: HTML, CSS, JavaScript e React",
     provider: "Udemy",
     date: "2024-07",
     hours: 50,
+    area: "frontend",
+    featured: true,
   },
   {
     title: "JavaScript Algorithms and Data Structures",
     provider: "freeCodeCamp",
     date: "2023-12",
     hours: 300,
+    area: "programming",
+    featured: true,
   },
   {
     title: "JavaScript para Web: crie páginas dinâmicas",
     provider: "Alura",
     date: "2023-07",
     hours: 20,
+    area: "frontend",
   },
   {
     title: "Microsoft AI-900: serviços de IA em nuvem",
     provider: "SENAI",
     date: "2022-11",
     hours: 40,
+    area: "ai",
   },
-  { title: "Excel básico", provider: "SENAI", date: "2022-09", hours: 20 },
+  { title: "Excel básico", provider: "SENAI", date: "2022-09", hours: 20, area: "data" },
 ]

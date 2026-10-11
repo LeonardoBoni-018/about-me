@@ -12,7 +12,6 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
   e certificações e 7 projetos com estudos de caso escritos a partir dos repositórios.
 - Foto de perfil, LinkedIn e e-mail reais; grafo de conhecimento e diagrama do topo refletindo
   as tecnologias que aparecem de fato nos projetos.
-- Cursos e certificações exibidos como `git tag` na trajetória.
 
 ### Alterado
 
@@ -26,6 +25,9 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Adicionado
 
+- Seção "Certificados" (`vault` · `certs.verify()`), separada da trajetória: totais em odômetro
+  (certificados, horas, emissores), os principais como certificados X.509 que se "verificam" ao
+  entrar na tela, e a lista completa com filtro por área.
 - Seção "Front-end" (`edge` · `ui.render()`): os fronts mais bem estruturados — Frames by Gi
   (site no ar, cliente real, com screenshots), byFood, Psyke e Agendamento (com a planta da tela
   desenhada a partir dos componentes reais). Cada web app liga à API que consome, e o estudo de

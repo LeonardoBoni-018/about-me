@@ -16,6 +16,7 @@
     "about": "Sobre",
     "stack": "Stack",
     "experience": "Trajetória",
+    "certificates": "Certificados",
     "projects": "Projetos",
     "interfaces": "Front-end",
     "contact": "Contato"
@@ -52,10 +53,34 @@
     "present": "hoje",
     "author": "Autor",
     "date": "Data",
-    "educationBranch": "branch: estudos",
-    "coursesTitle": "cursos e certificações",
-    "coursesMore": "mais",
-    "coursesLess": "mostrar menos"
+    "educationBranch": "branch: estudos"
+  },
+  "certificates": {
+    "title": "Certificados verificados",
+    "description": "O que estudei além do trabalho e da faculdade, lido como uma cadeia de certificados: quem emitiu, quando e quantas horas de estudo.",
+    "stats": {
+      "count": "certificados",
+      "hours": "horas de estudo",
+      "issuers": "emissores"
+    },
+    "issuer": "Emissor",
+    "issued": "Emitido",
+    "load": "Carga",
+    "area": "Área",
+    "pending": "verificando…",
+    "valid": "✓ válido",
+    "listTitle": "todos os certificados",
+    "filter": "Filtrar por área",
+    "all": "todos",
+    "areas": {
+      "programming": "programação",
+      "frontend": "front-end",
+      "backend": "back-end",
+      "data": "dados",
+      "ai": "IA",
+      "infra": "infra",
+      "language": "idiomas"
+    }
   },
   "projects": {
     "title": "Jobs processados",

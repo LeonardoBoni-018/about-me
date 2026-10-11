@@ -124,8 +124,14 @@ site). Erros de envio aparecem no log da função na Vercel com o prefixo `[cont
 
 ## Adicionar um curso ou certificação — `src/content/courses.ts`
 
-Inclua `{ title, provider, date: "AAAA-MM", hours? }` mantendo a lista do mais recente para o
-mais antigo (um teste verifica). Os 6 primeiros aparecem direto; o resto fica em "+ N mais".
+Inclua `{ title, provider, date: "AAAA-MM", hours?, area, featured? }` mantendo a lista do mais
+recente para o mais antigo (um teste verifica). Eles aparecem na seção "Certificados":
+
+- `area` (`backend`, `frontend`, `programming`, `data`, `ai`, `infra`, `language`) vira o
+  filtro da lista completa.
+- `featured: true` mostra o curso como certificado grande no topo (ordenados por carga horária).
+  Reserve para os de maior carga ou mais relevantes para as vagas que você busca.
+- Os totais (certificados, horas e emissores) são calculados da própria lista.
 
 ## Ajustar o diagrama do topo — `src/content/system.ts`
 

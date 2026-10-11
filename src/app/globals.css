@@ -319,3 +319,47 @@
     transform: none;
   }
 }
+
+/* Certificados: "verificando…" → "válido" (ver verify-status.tsx). */
+.verify-status .verify-pending {
+  opacity: 0;
+}
+.verify-status[data-pending] .verify-pending {
+  opacity: 1;
+}
+.verify-status[data-pending] .verify-valid {
+  opacity: 0;
+}
+.verify-status:not([data-pending]) .verify-pending {
+  animation: verify-hide 1ms var(--verify-delay) both;
+}
+.verify-status:not([data-pending]) .verify-valid {
+  animation: verify-in 300ms var(--verify-delay) both;
+}
+@keyframes verify-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+/* Mantém o "verificando…" visível durante o atraso e some quando o "válido" entra. */
+@keyframes verify-hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .verify-status .verify-pending,
+  .verify-status:not([data-pending]) .verify-pending {
+    animation: none;
+    opacity: 0;
+  }
+  .verify-status .verify-valid,
+  .verify-status[data-pending] .verify-valid {
+    animation: none;
+    opacity: 1;
+  }
+}

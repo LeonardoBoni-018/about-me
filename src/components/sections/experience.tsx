@@ -1,13 +1,12 @@
 import { Reveal } from "@/components/motion/reveal"
 import { CommitLine } from "@/components/system/commit-line"
 import { SystemSection } from "@/components/system/system-section"
-import { courses } from "@/content/courses"
 import { experiences } from "@/content/experience"
 import { profile } from "@/content/profile"
 import { techLabels } from "@/content/tech"
 import type { Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/dictionaries"
-import { formatMonth, formatPeriod } from "@/lib/format"
+import { formatPeriod } from "@/lib/format"
 import { shortHash } from "@/lib/hash"
 
 interface ExperienceProps {
@@ -93,58 +92,6 @@ export function Experience({ locale, dict }: ExperienceProps) {
           })}
         </ol>
       </CommitLine>
-
-      <Reveal className="mt-16">
-        <CourseTags locale={locale} dict={dict} />
-      </Reveal>
     </SystemSection>
-  )
-}
-
-const VISIBLE_COURSES = 6
-
-/** Cursos e certificações como a saída de um `git tag`: os mais recentes à mostra, o resto expansível. */
-function CourseTags({
-  locale,
-  dict,
-}: {
-  locale: Locale
-  dict: Dictionary["experience"]
-}) {
-  const row = (course: (typeof courses)[number]) => (
-    <li
-      key={`${course.title}-${course.date}`}
-      className="grid gap-x-4 gap-y-0.5 border-b border-dashed py-3 sm:grid-cols-[7rem_1fr_auto]"
-    >
-      <span className="text-xs text-muted-foreground">
-        {formatMonth(course.date, locale)}
-      </span>
-      <span className="font-sans text-foreground">
-        {course.title}
-        <span className="text-muted-foreground"> · {course.provider}</span>
-      </span>
-      {course.hours && <span className="text-xs text-success">{course.hours}h</span>}
-    </li>
-  )
-
-  return (
-    <div className="rounded-lg border bg-card/70 p-5 font-mono text-sm sm:p-6">
-      <p className="text-xs text-muted-foreground">
-        <span className="text-primary">$</span> git tag --sort=-date{" "}
-        <span className="text-ink"># {dict.coursesTitle}</span>
-      </p>
-      <ul className="mt-3">{courses.slice(0, VISIBLE_COURSES).map(row)}</ul>
-      {courses.length > VISIBLE_COURSES && (
-        <details className="group mt-1">
-          <summary className="cursor-pointer list-none py-3 text-xs text-primary transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
-            <span className="group-open:hidden">
-              + {courses.length - VISIBLE_COURSES} {dict.coursesMore}
-            </span>
-            <span className="hidden group-open:inline">− {dict.coursesLess}</span>
-          </summary>
-          <ul>{courses.slice(VISIBLE_COURSES).map(row)}</ul>
-        </details>
-      )}
-    </div>
   )
 }

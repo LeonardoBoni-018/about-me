@@ -13,3 +13,13 @@ export function shortHash(input: string, length = 7): string {
   while (hex.length < length) hex += shortHash(hex, 8)
   return hex.slice(0, length)
 }
+
+/** "Impressão digital" decorativa no formato de certificados: "4F:A2:19:C0:…". */
+export function fingerprint(input: string, bytes = 8): string {
+  return (
+    shortHash(input, bytes * 2)
+      .toUpperCase()
+      .match(/../g)
+      ?.join(":") ?? ""
+  )
+}

@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 import { gotoReady } from "./helpers"
 import { navSections } from "../src/components/layout/nav-items"
+import { courses } from "../src/content/courses"
 import { interfaces } from "../src/content/interfaces"
 import { projects } from "../src/content/projects"
 
@@ -370,5 +371,28 @@ test.describe("front-ends", () => {
     await section.getByRole("link", { name: "Ver a API byFood →" }).click()
     await expect(page).toHaveURL(/\/pt\/projects\/byfood$/)
     await expect(page.getByText("A outra ponta: o front-end")).toBeVisible()
+  })
+})
+
+test.describe("certificados", () => {
+  test("destaques ficam válidos e o filtro por área reduz a lista", async ({ page }) => {
+    await gotoReady(page, "/pt#certificates")
+    const section = page.locator("#certificates")
+    const featured = courses.filter((c) => c.featured)
+    await expect(section.getByRole("heading", { level: 3 })).toHaveCount(featured.length)
+    // A verificação termina quando os cartões entram na tela.
+    await section.getByRole("heading", { level: 3 }).first().scrollIntoViewIfNeeded()
+    await expect(section.locator(".verify-valid").first()).toHaveCSS("opacity", "1")
+
+    const list = section.getByRole("list").last()
+    await expect(list.getByRole("listitem")).toHaveCount(courses.length)
+    const frontend = section.getByRole("button", { name: /^front-end/ })
+    await frontend.click()
+    await expect(frontend).toHaveAttribute("aria-pressed", "true")
+    await expect(list.getByRole("listitem")).toHaveCount(
+      courses.filter((c) => c.area === "frontend").length
+    )
+    await section.getByRole("button", { name: /^todos/ }).click()
+    await expect(list.getByRole("listitem")).toHaveCount(courses.length)
   })
 })
