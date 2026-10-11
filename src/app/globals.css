@@ -297,3 +297,25 @@
   animation: none;
   mix-blend-mode: normal;
 }
+
+/* Wireframe das interfaces: cada componente "pinta" na ordem da árvore (ver wireframe.tsx). */
+.wire-box {
+  transition:
+    opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.wire-box[data-hidden] {
+  opacity: 0;
+  transform: scale(0.94);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wire-box {
+    transition: none;
+  }
+  .wire-box[data-hidden] {
+    opacity: 1;
+    transform: none;
+  }
+}

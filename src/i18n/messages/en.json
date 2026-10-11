@@ -17,6 +17,7 @@
     "stack": "Stack",
     "experience": "Journey",
     "projects": "Projects",
+    "interfaces": "Front-end",
     "contact": "Contact"
   },
   "hero": {
@@ -64,6 +65,23 @@
     "queue": "queue",
     "trackLabel": "Project queue — scroll or swipe to advance"
   },
+  "interfaces": {
+    "title": "The other side of the API",
+    "description": "Full stack for real: the screens that consume those APIs and the sites I've shipped. When there's no live site, I show a blueprint of the screen with the real component names from the code.",
+    "kinds": {
+      "site": "site",
+      "webapp": "web app"
+    },
+    "consumes": "consumes the",
+    "live": "See the live site",
+    "repo": "Code on GitHub",
+    "apiLink": "See the API",
+    "newTab": "opens in a new tab",
+    "wireframeLabel": "Blueprint of the main screen, with the components from the code",
+    "wireframeCaption": "screen blueprint · real component names",
+    "screenshotDesktop": "Home page of the {title} site on desktop",
+    "screenshotMobile": "Home page of the {title} site on mobile"
+  },
   "project": {
     "back": "Back to projects",
     "problem": "The problem",
@@ -77,6 +95,9 @@
     "method": "Method",
     "path": "Path",
     "endpointDescription": "What it does",
+    "frontend": "The other end: the front-end",
+    "frontendRepo": "Front-end code",
+    "frontendMore": "See all front-ends",
     "next": "Next job"
   },
   "contact": {

@@ -88,6 +88,43 @@ export interface Project {
   demoUrl?: string
 }
 
+/** Wireframe da interface: caixas num quadro 320×200, com o nome real do componente. */
+export interface WireBox {
+  x: number
+  y: number
+  w: number
+  h: number
+  label: string
+  /** Subdivide a caixa em uma grade de cartões (colunas × linhas). */
+  grid?: [number, number]
+  /** Destaque laranja: o componente que mais diz sobre a tela. */
+  accent?: boolean
+}
+
+/** Projeto de front-end (site ou app) — seção "interfaces". */
+export interface InterfaceProject {
+  slug: string
+  title: string
+  year: number
+  kind: "site" | "webapp"
+  summary: Localized
+  highlights: Localized<string[]>
+  tech: TechId[]
+  repoUrl: string
+  /** Site no ar. Com ele, a seção mostra screenshots reais em vez do wireframe. */
+  demoUrl?: string
+  /** Screenshots em /public (desktop e celular), usadas quando há `demoUrl`. */
+  screenshots?: { desktop: string; mobile: string }
+  /** Projeto feito para um cliente de verdade. */
+  client?: Localized
+  /** Slug do projeto de API que esta interface consome (liga as duas pontas). */
+  apiSlug?: string
+  /** Rota exibida na barra do "navegador". */
+  route: string
+  /** Planta da tela principal, para quem não tem site no ar (nomes reais dos componentes). */
+  wireframe?: WireBox[]
+}
+
 export interface SkillGroup {
   id: string
   title: Localized

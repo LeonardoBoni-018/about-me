@@ -57,6 +57,19 @@ export const tech = {
   openai: "OpenAI API",
   twilio: "Twilio",
   whatsapp: "WhatsApp API",
+  vite: "Vite",
+  tailwind: "Tailwind CSS",
+  zustand: "Zustand",
+  tanstackquery: "TanStack Query",
+  reactrouter: "React Router",
+  reacthookform: "React Hook Form",
+  zod: "Zod",
+  shadcn: "shadcn/ui",
+  framermotion: "Framer Motion",
+  vitest: "Vitest",
+  recharts: "Recharts",
+  fullcalendar: "FullCalendar",
+  sse: "Server-Sent Events",
 } as const satisfies Record<string, string>
 
 export type TechId = keyof typeof tech

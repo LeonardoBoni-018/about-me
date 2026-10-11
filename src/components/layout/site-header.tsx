@@ -47,7 +47,7 @@ export function SiteHeader({ locale, nav, a11y }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <nav aria-label={a11y.mainNav} className="hidden md:block">
+        <nav aria-label={a11y.mainNav} className="hidden lg:block">
           <ul className="flex items-center gap-1 text-sm">
             {navSections.map((section) => (
               <li key={section}>
@@ -71,7 +71,7 @@ export function SiteHeader({ locale, nav, a11y }: SiteHeaderProps) {
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
-            className="hidden font-mono text-[11px] text-muted-foreground sm:inline md:hidden"
+            className="hidden font-mono text-[11px] text-muted-foreground sm:inline lg:hidden"
           >
             {active ? hops[active].hop : "client"}
           </span>

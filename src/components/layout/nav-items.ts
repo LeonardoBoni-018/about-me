@@ -4,6 +4,7 @@ export const navSections = [
   "stack",
   "experience",
   "projects",
+  "interfaces",
   "contact",
 ] as const
 
@@ -18,6 +19,7 @@ export const hops: Record<NavSection, { hop: string; span: string; ms: number }>
   stack: { hop: "service", span: "knowledge.query()", ms: 38 },
   experience: { hop: "database", span: "history.load()", ms: 64 },
   projects: { hop: "workers", span: "jobs.process()", ms: 91 },
+  interfaces: { hop: "edge", span: "ui.render()", ms: 27 },
   contact: { hop: "response", span: "response.write()", ms: 43 },
 }
 

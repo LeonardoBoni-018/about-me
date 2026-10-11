@@ -2,6 +2,7 @@ import { About } from "@/components/sections/about"
 import { Contact } from "@/components/sections/contact"
 import { Experience } from "@/components/sections/experience"
 import { Hero } from "@/components/sections/hero"
+import { Interfaces } from "@/components/sections/interfaces"
 import { Projects } from "@/components/sections/projects"
 import { Stack } from "@/components/sections/stack"
 import { RequestRail } from "@/components/system/request-rail"
@@ -57,6 +58,7 @@ export default async function HomePage() {
       <Stack locale={locale} dict={dict.stack} />
       <Experience locale={locale} dict={dict.experience} />
       <Projects locale={locale} dict={dict.projects} />
+      <Interfaces locale={locale} dict={dict.interfaces} />
       <Contact locale={locale} dict={dict.contact} />
     </>
   )

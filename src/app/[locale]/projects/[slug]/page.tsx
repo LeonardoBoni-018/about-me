@@ -4,6 +4,9 @@ import { notFound } from "next/navigation"
 import { Reveal } from "@/components/motion/reveal"
 import { ScrambleText } from "@/components/motion/scramble-text"
 import { MiniPipeline } from "@/components/system/mini-pipeline"
+import { ViewportFrame } from "@/components/system/viewport-frame"
+import { Wireframe } from "@/components/system/wireframe"
+import { interfaces } from "@/content/interfaces"
 import { getProject, projects } from "@/content/projects"
 import { tech, techLabels } from "@/content/tech"
 import { htmlLang, locales } from "@/i18n/config"
@@ -47,6 +50,8 @@ export default async function ProjectPage({
   const locale = await getLocale()
   const { project: dict } = await getDictionary()
   const next = projects[(projects.indexOf(project) + 1) % projects.length]
+  // O front que consome esta API, se houver (seção "Front-end" da home).
+  const front = interfaces.find((item) => item.apiSlug === project.slug)
 
   return (
     <article className="pt-28 pb-16 sm:pt-32">
@@ -196,6 +201,47 @@ export default async function ProjectPage({
             </ul>
           </Block>
         </Reveal>
+
+        {front && (
+          <Reveal className="border-t border-dashed py-14">
+            <Block label={dict.frontend}>
+              <div className="grid items-center gap-8 lg:grid-cols-[1fr_1fr]">
+                {front.wireframe && (
+                  <ViewportFrame route={front.route} status="dev" className="min-w-0">
+                    <Wireframe
+                      boxes={front.wireframe}
+                      label={`${dict.frontend}: ${front.title}`}
+                    />
+                  </ViewportFrame>
+                )}
+                <div className="min-w-0">
+                  <h3 className="font-display text-2xl font-bold tracking-tight">
+                    {front.title}
+                  </h3>
+                  <p className="mt-2 text-pretty text-muted-foreground">
+                    {front.summary[locale]}
+                  </p>
+                  <p className="mt-4 font-mono text-xs text-muted-foreground">
+                    {techLabels(front.tech).join(" · ")}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm">
+                    <a
+                      href={front.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline"
+                    >
+                      {dict.frontendRepo} ↗
+                    </a>
+                    <Link href={`/${locale}#interfaces`} className="link-underline">
+                      {dict.frontendMore} →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Block>
+          </Reveal>
+        )}
 
         {next && next.slug !== project.slug && (
           <Reveal className="border-t pt-10">

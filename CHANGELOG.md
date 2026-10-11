@@ -16,6 +16,8 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Alterado
 
+- Menu horizontal a partir de 1024px (com 7 seções, não cabia em tablets); abaixo disso, o
+  menu recolhível.
 - Contato com os quatro canais (e-mail, WhatsApp, LinkedIn e GitHub) no mesmo formato: cartão
   clicável com ícone, ação e endereço. O rodapé também ganhou ícones.
 - Novo conceito "ciclo de vida de uma requisição": a página é percorrida como uma requisição
@@ -24,6 +26,10 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Adicionado
 
+- Seção "Front-end" (`edge` · `ui.render()`): os fronts mais bem estruturados — Frames by Gi
+  (site no ar, cliente real, com screenshots), byFood, Psyke e Agendamento (com a planta da tela
+  desenhada a partir dos componentes reais). Cada web app liga à API que consome, e o estudo de
+  caso da API ganhou o bloco "A outra ponta: o front-end".
 - Formulário de contato envia por SMTP (ex.: Gmail com senha de app), além do Resend, e
   manda uma confirmação automática para quem escreveu, no idioma da página. O console mostra
   se a confirmação saiu.

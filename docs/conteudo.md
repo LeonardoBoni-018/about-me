@@ -59,6 +59,20 @@ Cada projeto gera uma página de estudo de caso em `/pt/projects/<slug>` e `/en/
 - `problem`, `solution`, `architecture` (caixas do diagrama, em ordem), `endpoints` e `results`
   formam o estudo de caso.
 
+## Adicionar um front-end — `src/content/interfaces.ts`
+
+A seção "Front-end" da home mostra só os fronts mais bem estruturados — não coloque tudo do
+GitHub, escolha os que você mostraria numa entrevista.
+
+- **Site no ar:** preencha `demoUrl` e `screenshots` (desktop 1440×900 e celular 780×1328, JPEG
+  em `public/interfaces/`). A seção mostra as duas capturas sobrepostas.
+- **Sem site no ar:** preencha `wireframe` com as caixas da tela principal num quadro 320×200,
+  usando os **nomes reais dos componentes** do repositório (`grid` desenha cartões/células,
+  `accent` destaca o componente mais importante). Um teste garante que tudo cabe no quadro.
+- `apiSlug` liga o front ao projeto de API que ele consome: aparece "consome a … API" na home e
+  um bloco "A outra ponta: o front-end" no estudo de caso da API.
+- `client` marca projetos feitos para clientes reais.
+
 ## WhatsApp — variável `CONTACT_WHATSAPP`
 
 O número **não fica no código** (o repositório pode ser público): defina-o em `.env.local`

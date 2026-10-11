@@ -17,6 +17,7 @@
     "stack": "Stack",
     "experience": "Trajetória",
     "projects": "Projetos",
+    "interfaces": "Front-end",
     "contact": "Contato"
   },
   "hero": {
@@ -64,6 +65,23 @@
     "queue": "fila",
     "trackLabel": "Fila de projetos — role ou deslize para avançar"
   },
+  "interfaces": {
+    "title": "Do outro lado da API",
+    "description": "Full stack de verdade: as telas que consomem essas APIs e os sites que entreguei. Quando não há site no ar, mostro a planta da tela com os componentes reais do código.",
+    "kinds": {
+      "site": "site",
+      "webapp": "web app"
+    },
+    "consumes": "consome a",
+    "live": "Ver o site no ar",
+    "repo": "Código no GitHub",
+    "apiLink": "Ver a API",
+    "newTab": "abre em uma nova aba",
+    "wireframeLabel": "Planta da tela principal, com os componentes do código",
+    "wireframeCaption": "planta da tela · nomes reais dos componentes",
+    "screenshotDesktop": "Página inicial do site {title} no computador",
+    "screenshotMobile": "Página inicial do site {title} no celular"
+  },
   "project": {
     "back": "Voltar para os projetos",
     "problem": "O problema",
@@ -77,6 +95,9 @@
     "method": "Método",
     "path": "Rota",
     "endpointDescription": "O que faz",
+    "frontend": "A outra ponta: o front-end",
+    "frontendRepo": "Código do front",
+    "frontendMore": "Ver todos os fronts",
     "next": "Próximo job"
   },
   "contact": {

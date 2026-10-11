@@ -30,7 +30,15 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: { pt: "Front-end", en: "Front-end" },
-    items: ["react", "typescript", "javascript", "reactnative", "flutter"],
+    items: [
+      "react",
+      "typescript",
+      "tailwind",
+      "zustand",
+      "tanstackquery",
+      "javascript",
+      "reactnative",
+    ],
     note: { pt: "a outra metade do full stack", en: "the other half of full stack" },
   },
   {

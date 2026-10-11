@@ -1,5 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 import { gotoReady } from "./helpers"
+import { navSections } from "../src/components/layout/nav-items"
+import { interfaces } from "../src/content/interfaces"
 import { projects } from "../src/content/projects"
 
 const desktopOnly = (isMobile: boolean) => test.skip(isMobile, "apenas desktop")
@@ -84,7 +86,7 @@ test.describe("navegação", () => {
     await gotoReady(page, "/pt")
     await page.getByRole("button", { name: "Abrir menu" }).click()
     const dialog = page.getByRole("dialog")
-    await expect(dialog.getByRole("link")).toHaveCount(5)
+    await expect(dialog.getByRole("link")).toHaveCount(navSections.length)
     await page.keyboard.press("Escape")
     await expect(dialog).toBeHidden()
   })
@@ -130,6 +132,8 @@ test.describe("fila de projetos", () => {
   // hidratação e não ser observado.
   async function scrollToTrackEnd(page: Page) {
     const WHEEL = 600
+    // Fontes atrasadas mudam a altura do que vem antes e o navegador reancora o scroll.
+    await page.evaluate(() => document.fonts.ready)
     await page.evaluate((wheel) => {
       const pinned = document.querySelector<HTMLElement>("#projects .track-pin")
       if (!pinned) throw new Error("trilho fixo não encontrado")
@@ -148,8 +152,13 @@ test.describe("fila de projetos", () => {
     desktopOnly(isMobile)
     await gotoReady(page, "/pt")
     const total = String(projects.length).padStart(2, "0")
-    await scrollToTrackEnd(page)
-    await expect(page.locator("#projects")).toContainText(`${total} / ${total}`)
+    // Sob carga, um ajuste de layout tardio pode tirar a página do lugar: repete até chegar.
+    await expect(async () => {
+      await scrollToTrackEnd(page)
+      await expect(page.locator("#projects")).toContainText(`${total} / ${total}`, {
+        timeout: 1500,
+      })
+    }).toPass({ timeout: 15000 })
 
     const last = projects.at(-1)!
     const link = page
@@ -333,5 +342,33 @@ test.describe("WhatsApp", () => {
     await expect(link).toHaveAttribute("target", "_blank")
     await expect(link).toHaveAttribute("rel", /nofollow/)
     await expect(link).toContainText(/\+55 \(\d{2}\) \d{4,5}-\d{4}/)
+  })
+})
+
+test.describe("front-ends", () => {
+  test("site no ar tem screenshots e link; web apps ligam à API que consomem", async ({
+    page,
+  }) => {
+    await gotoReady(page, "/pt#interfaces")
+    const section = page.locator("#interfaces")
+    await expect(section.getByRole("heading", { level: 3 })).toHaveCount(
+      interfaces.length
+    )
+
+    await expect(
+      section.getByRole("img", { name: /Frames by Gi no computador/ })
+    ).toBeVisible()
+    await expect(section.getByRole("link", { name: /Ver o site no ar/ })).toHaveAttribute(
+      "href",
+      "https://framesbygi.vercel.app"
+    )
+    // Wireframes com rótulo acessível (nomes reais dos componentes ficam no SVG).
+    await expect(
+      section.getByRole("img", { name: /Planta da tela principal/ })
+    ).toHaveCount(interfaces.filter((i) => !i.demoUrl).length)
+
+    await section.getByRole("link", { name: "Ver a API byFood →" }).click()
+    await expect(page).toHaveURL(/\/pt\/projects\/byfood$/)
+    await expect(page.getByText("A outra ponta: o front-end")).toBeVisible()
   })
 })
