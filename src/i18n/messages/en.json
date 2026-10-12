@@ -92,7 +92,7 @@
   },
   "interfaces": {
     "title": "The other side of the API",
-    "description": "Full stack for real: the screens that consume those APIs and the sites I've shipped. When there's no live site, I show a blueprint of the screen with the real component names from the code.",
+    "description": "Full stack for real: the screens that consume those APIs and the sites I've shipped for clients — all live, with captures of the real sites.",
     "kinds": {
       "site": "site",
       "webapp": "web app"
@@ -121,8 +121,11 @@
     "path": "Path",
     "endpointDescription": "What it does",
     "frontend": "The other end: the front-end",
+    "frontendLive": "See the live site",
     "frontendRepo": "Front-end code",
     "frontendMore": "See all front-ends",
+    "frontendScreenDesktop": "{title} screen on desktop",
+    "frontendScreenMobile": "{title} screen on mobile",
     "next": "Next job"
   },
   "contact": {

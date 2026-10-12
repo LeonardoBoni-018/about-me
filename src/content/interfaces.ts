@@ -2,8 +2,9 @@ import type { InterfaceProject } from "@/lib/types"
 
 const GH = "https://github.com/LeonardoBoni-018"
 
-// Fonte: repositórios no GitHub (READMEs, package.json e estrutura de pastas), out/2026.
-// Só entram os fronts mais bem estruturados; os nomes no wireframe são componentes reais.
+// Fonte: repositórios no GitHub (READMEs, commits, package.json) e os sites no ar, out/2026.
+// Só entram os fronts mais bem estruturados. Screenshots tiradas dos deploys de produção
+// (homepage de cada repositório); telas com login mostram a entrada do sistema.
 export const interfaces: InterfaceProject[] = [
   {
     slug: "frames-by-gi",
@@ -39,38 +40,70 @@ export const interfaces: InterfaceProject[] = [
     route: "framesbygi.vercel.app",
   },
   {
+    slug: "natal-entrega",
+    title: "Ensaio de Natal · entrega",
+    year: 2026,
+    kind: "site",
+    client: { pt: "cliente real · no ar", en: "real client · live" },
+    summary: {
+      pt: "Página de entrega dos ensaios de Natal do estúdio da Giovana e do Guilherme: o estúdio gera um link com o nome da família e a pasta do Drive, e cada cliente recebe uma página só dela para acessar as fotos.",
+      en: "The delivery page for Giovana and Guilherme's Christmas photo shoots: the studio generates a link with the family's name and the Drive folder, and each client gets a page of their own to reach the photos.",
+    },
+    highlights: {
+      pt: [
+        "Sem banco nem login: nome e pasta viajam codificados no próprio link",
+        "Só aceita links do Google Drive, para o gerador não virar redirecionador",
+        "Luzes, neve e brilhos com Motion, aliviados depois de travar no iPhone",
+        "Páginas fora do Google (noindex) e aviso quando o link chega cortado",
+      ],
+      en: [
+        "No database or login: the name and folder travel encoded in the link itself",
+        "Only accepts Google Drive links, so the generator can't become an open redirect",
+        "Lights, snow and sparkles with Motion, toned down after freezing on iPhones",
+        "Pages kept out of Google (noindex) and a notice when a link arrives truncated",
+      ],
+    },
+    tech: ["react", "typescript", "vite", "tailwind", "motion"],
+    repoUrl: `${GH}/leadpage-natal`,
+    demoUrl: "https://leadpage-natal.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/natal-desktop.jpg",
+      mobile: "/interfaces/natal-mobile.jpg",
+    },
+    route: "leadpage-natal.vercel.app/f/…",
+  },
+  {
     slug: "byfood-site",
     title: "byFood · site",
     year: 2026,
     kind: "webapp",
     apiSlug: "byfood",
     summary: {
-      pt: "O site do restaurante que consome a API byFood: cardápio com carrinho, acompanhamento do pedido e um painel para a equipe.",
-      en: "The restaurant site that consumes the byFood API: a menu with a cart, order tracking and a panel for the staff.",
+      pt: "O front do marketplace byFood: o cliente escolhe a loja, monta a sacola e fecha o pedido no WhatsApp; cada loja tem o próprio painel.",
+      en: "The byFood marketplace front-end: customers pick a store, fill the bag and close the order on WhatsApp; every store gets its own panel.",
     },
     highlights: {
       pt: [
-        "Carrinho lateral no desktop e flutuante no celular",
-        "Acompanhamento do pedido quase em tempo real (consulta a cada 5 s)",
-        "Painel admin com login JWT: métricas, cardápio e status dos pedidos",
-        "Estado global com Zustand e tema claro/escuro que segue o sistema",
+        "Vitrine de lojas com busca, filtro por tipo de comida e paginação",
+        "Página de cada loja com cardápio por categoria e sacola presa a uma loja só",
+        "Cadastro de cliente e de loja, com sessão que expira e rotas por papel",
+        "Painel da loja: pedidos com atualização automática, cardápio e dados da loja",
       ],
       en: [
-        "Side cart on desktop, floating cart on mobile",
-        "Near real-time order tracking (polls every 5 s)",
-        "Admin panel with JWT login: stats, menu and order status",
-        "Global state with Zustand and a light/dark theme that follows the system",
+        "Store directory with search, a cuisine filter and pagination",
+        "A page per store with the menu by category and a bag tied to a single store",
+        "Customer and store sign-up, with an expiring session and role-based routes",
+        "Store panel: auto-refreshing orders, menu and store settings",
       ],
     },
     tech: ["react", "typescript", "vite", "tailwind", "zustand", "reactrouter"],
     repoUrl: `${GH}/ByFood-Site`,
-    route: "localhost:3000/",
-    wireframe: [
-      { x: 0, y: 0, w: 320, h: 22, label: "TopBar" },
-      { x: 12, y: 32, w: 208, h: 16, label: "CategoryTabs" },
-      { x: 12, y: 56, w: 208, h: 132, label: "FoodGrid", grid: [3, 2] },
-      { x: 230, y: 32, w: 78, h: 156, label: "CartSidebar", accent: true },
-    ],
+    demoUrl: "https://byfood-alpha.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/byfood-desktop.jpg",
+      mobile: "/interfaces/byfood-mobile.jpg",
+    },
+    route: "byfood-alpha.vercel.app/lojas/bistro-byfood",
   },
   {
     slug: "psyke-front",
@@ -79,8 +112,8 @@ export const interfaces: InterfaceProject[] = [
     kind: "webapp",
     apiSlug: "psyke",
     summary: {
-      pt: "O painel da plataforma Psyke para clínicas de psicologia: agenda, pacientes, prontuários, financeiro e relatórios — um módulo por funcionalidade.",
-      en: "The Psyke platform's dashboard for psychology clinics: scheduling, patients, records, billing and reports — one module per feature.",
+      pt: "O painel da plataforma Psyke para clínicas de psicologia: cada clínica entra com o próprio ID e tem agenda, pacientes, prontuários, financeiro e relatórios — um módulo por funcionalidade.",
+      en: "The Psyke platform's dashboard for psychology clinics: each clinic signs in with its own ID and gets scheduling, patients, records, billing and reports — one module per feature.",
     },
     highlights: {
       pt: [
@@ -110,13 +143,12 @@ export const interfaces: InterfaceProject[] = [
       "vitest",
     ],
     repoUrl: `${GH}/Psyke-Front`,
-    route: "localhost:5173/agenda",
-    wireframe: [
-      { x: 0, y: 0, w: 62, h: 200, label: "Sidebar" },
-      { x: 62, y: 0, w: 258, h: 22, label: "Header" },
-      { x: 74, y: 32, w: 234, h: 28, label: "StatCard", grid: [4, 1] },
-      { x: 74, y: 70, w: 234, h: 118, label: "CalendarView", grid: [7, 4], accent: true },
-    ],
+    demoUrl: "https://psyke-front.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/psyke-desktop.jpg",
+      mobile: "/interfaces/psyke-mobile.jpg",
+    },
+    route: "psyke-front.vercel.app/login",
   },
   {
     slug: "agendamento-front",
@@ -125,21 +157,21 @@ export const interfaces: InterfaceProject[] = [
     kind: "webapp",
     apiSlug: "sistema-agendamento",
     summary: {
-      pt: "A interface do sistema de agendamento: o cliente marca horário sem cadastro e o estabelecimento acompanha tudo em tempo real.",
-      en: "The scheduling system's interface: customers book without signing up and the business follows everything in real time.",
+      pt: "A interface do sistema de agendamento: o cliente marca horário sem cadastro, entra na fila de espera ou paga antecipado, e o negócio acompanha tudo em tempo real.",
+      en: "The scheduling system's interface: customers book without signing up, join the waiting list or pay upfront, and the business follows everything in real time.",
     },
     highlights: {
       pt: [
         "Notificações em tempo real via Server-Sent Events (hook useSse)",
         "Página pública de agendamento, sem exigir cadastro",
-        "Painel admin: funcionários, serviços, horários, fila de espera e avaliações",
-        "Componentes shadcn/ui, formulários com React Hook Form + Zod e tema claro/escuro",
+        "Fila de espera com aviso e pagamento antecipado pelo Mercado Pago",
+        "Painel admin: funcionários, serviços, horários e avaliações; tema claro/escuro",
       ],
       en: [
         "Real-time notifications via Server-Sent Events (a useSse hook)",
         "Public booking page, no sign-up required",
-        "Admin panel: staff, services, schedules, waiting list and reviews",
-        "shadcn/ui components, React Hook Form + Zod forms and a light/dark theme",
+        "Waiting list with notifications and upfront payment through Mercado Pago",
+        "Admin panel: staff, services, schedules and reviews; light/dark theme",
       ],
     },
     tech: [
@@ -155,14 +187,11 @@ export const interfaces: InterfaceProject[] = [
       "sse",
     ],
     repoUrl: `${GH}/sistema-agendamento-front-end`,
-    route: "localhost:5173/dashboard",
-    wireframe: [
-      { x: 0, y: 0, w: 62, h: 200, label: "Sidebar" },
-      { x: 62, y: 0, w: 178, h: 22, label: "Header" },
-      { x: 240, y: 0, w: 80, h: 22, label: "NotificationBell", accent: true },
-      { x: 74, y: 32, w: 140, h: 72, label: "DashboardPage" },
-      { x: 224, y: 32, w: 84, h: 72, label: "FilaEsperaCard" },
-      { x: 74, y: 114, w: 234, h: 74, label: "AppointmentsPage", grid: [1, 4] },
-    ],
+    demoUrl: "https://sistema-agendamento-front-end.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/agendamento-desktop.jpg",
+      mobile: "/interfaces/agendamento-mobile.jpg",
+    },
+    route: "sistema-agendamento-front-end.vercel.app/login",
   },
 ]

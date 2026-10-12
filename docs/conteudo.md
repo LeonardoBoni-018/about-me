@@ -64,8 +64,13 @@ Cada projeto gera uma página de estudo de caso em `/pt/projects/<slug>` e `/en/
 A seção "Front-end" da home mostra só os fronts mais bem estruturados — não coloque tudo do
 GitHub, escolha os que você mostraria numa entrevista.
 
-- **Site no ar:** preencha `demoUrl` e `screenshots` (desktop 1440×900 e celular 780×1328, JPEG
-  em `public/interfaces/`). A seção mostra as duas capturas sobrepostas.
+- **Site no ar:** preencha `demoUrl` e `screenshots` (desktop 1440×900 e celular 780×1328 —
+  iPhone 13 com escala 2 —, JPEG em `public/interfaces/`). A seção e o estudo de caso da API
+  mostram as duas capturas sobrepostas.
+  - Capture o deploy de **produção** que está no campo _homepage_ do repositório no GitHub (o
+    `byfood.vercel.app`, por exemplo, é de outra pessoa; o seu é `byfood-alpha`).
+  - Use dados fictícios nas capturas (ex.: "Família Souza" na entrega de Natal). Sistemas com
+    login mostram a tela de entrada até alguém capturar as telas internas com um usuário de demo.
 - **Sem site no ar:** preencha `wireframe` com as caixas da tela principal num quadro 320×200,
   usando os **nomes reais dos componentes** do repositório (`grid` desenha cartões/células,
   `accent` destaca o componente mais importante). Um teste garante que tudo cabe no quadro.

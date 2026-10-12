@@ -92,7 +92,7 @@
   },
   "interfaces": {
     "title": "Do outro lado da API",
-    "description": "Full stack de verdade: as telas que consomem essas APIs e os sites que entreguei. Quando não há site no ar, mostro a planta da tela com os componentes reais do código.",
+    "description": "Full stack de verdade: as telas que consomem essas APIs e os sites que entreguei para clientes — todos no ar, com capturas dos sites reais.",
     "kinds": {
       "site": "site",
       "webapp": "web app"
@@ -121,8 +121,11 @@
     "path": "Rota",
     "endpointDescription": "O que faz",
     "frontend": "A outra ponta: o front-end",
+    "frontendLive": "Ver o site no ar",
     "frontendRepo": "Código do front",
     "frontendMore": "Ver todos os fronts",
+    "frontendScreenDesktop": "Tela do {title} no computador",
+    "frontendScreenMobile": "Tela do {title} no celular",
     "next": "Próximo job"
   },
   "contact": {

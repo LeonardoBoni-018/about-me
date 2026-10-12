@@ -66,6 +66,7 @@ export const tech = {
   zod: "Zod",
   shadcn: "shadcn/ui",
   framermotion: "Framer Motion",
+  motion: "Motion",
   vitest: "Vitest",
   recharts: "Recharts",
   fullcalendar: "FullCalendar",

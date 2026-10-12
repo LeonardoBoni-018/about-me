@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { Reveal } from "@/components/motion/reveal"
 import { ScrambleText } from "@/components/motion/scramble-text"
 import { MiniPipeline } from "@/components/system/mini-pipeline"
+import { InterfaceScreens } from "@/components/system/interface-screens"
 import { ViewportFrame } from "@/components/system/viewport-frame"
 import { Wireframe } from "@/components/system/wireframe"
 import { interfaces } from "@/content/interfaces"
@@ -206,13 +207,25 @@ export default async function ProjectPage({
           <Reveal className="border-t border-dashed py-14">
             <Block label={dict.frontend}>
               <div className="grid items-center gap-8 lg:grid-cols-[1fr_1fr]">
-                {front.wireframe && (
-                  <ViewportFrame route={front.route} status="dev" className="min-w-0">
-                    <Wireframe
-                      boxes={front.wireframe}
-                      label={`${dict.frontend}: ${front.title}`}
+                {front.screenshots ? (
+                  <div className="min-w-0">
+                    <InterfaceScreens
+                      item={front}
+                      alt={{
+                        desktop: dict.frontendScreenDesktop,
+                        mobile: dict.frontendScreenMobile,
+                      }}
                     />
-                  </ViewportFrame>
+                  </div>
+                ) : (
+                  front.wireframe && (
+                    <ViewportFrame route={front.route} status="dev" className="min-w-0">
+                      <Wireframe
+                        boxes={front.wireframe}
+                        label={`${dict.frontend}: ${front.title}`}
+                      />
+                    </ViewportFrame>
+                  )
                 )}
                 <div className="min-w-0">
                   <h3 className="font-display text-2xl font-bold tracking-tight">
@@ -225,6 +238,16 @@ export default async function ProjectPage({
                     {techLabels(front.tech).join(" · ")}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm">
+                    {front.demoUrl && (
+                      <a
+                        href={front.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary link-underline"
+                      >
+                        {dict.frontendLive} ↗
+                      </a>
+                    )}
                     <a
                       href={front.repoUrl}
                       target="_blank"

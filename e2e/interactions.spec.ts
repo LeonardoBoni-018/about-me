@@ -356,17 +356,20 @@ test.describe("front-ends", () => {
       interfaces.length
     )
 
-    await expect(
-      section.getByRole("img", { name: /Frames by Gi no computador/ })
-    ).toBeVisible()
-    await expect(section.getByRole("link", { name: /Ver o site no ar/ })).toHaveAttribute(
-      "href",
-      "https://framesbygi.vercel.app"
+    // Cada site no ar: link para o deploy e as duas capturas (computador e celular).
+    const live = interfaces.filter((i) => i.demoUrl)
+    const liveLinks = section.getByRole("link", { name: /Ver o site no ar/ })
+    await expect(liveLinks).toHaveCount(live.length)
+    for (const [i, item] of live.entries()) {
+      await expect(liveLinks.nth(i)).toHaveAttribute("href", item.demoUrl!)
+    }
+    await expect(section.getByRole("img", { name: /no computador$/ })).toHaveCount(
+      interfaces.filter((i) => i.screenshots).length
     )
-    // Wireframes com rótulo acessível (nomes reais dos componentes ficam no SVG).
+    // Quem não tem site no ar mostra a planta da tela (rótulo acessível no SVG).
     await expect(
       section.getByRole("img", { name: /Planta da tela principal/ })
-    ).toHaveCount(interfaces.filter((i) => !i.demoUrl).length)
+    ).toHaveCount(interfaces.filter((i) => !i.screenshots).length)
 
     await section.getByRole("link", { name: "Ver a API byFood →" }).click()
     await expect(page).toHaveURL(/\/pt\/projects\/byfood$/)

@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Reveal } from "@/components/motion/reveal"
+import { InterfaceScreens } from "@/components/system/interface-screens"
 import { SystemSection } from "@/components/system/system-section"
 import { ViewportFrame } from "@/components/system/viewport-frame"
 import { Wireframe } from "@/components/system/wireframe"
@@ -59,7 +59,10 @@ function InterfaceEntry({
     >
       <div className={cn("min-w-0", flip && "lg:order-2")}>
         {item.screenshots && item.demoUrl ? (
-          <Screens item={item} dict={dict} />
+          <InterfaceScreens
+            item={item}
+            alt={{ desktop: dict.screenshotDesktop, mobile: dict.screenshotMobile }}
+          />
         ) : (
           <ViewportFrame route={item.route} status="dev">
             <Wireframe
@@ -143,40 +146,5 @@ function InterfaceEntry({
         </div>
       </div>
     </article>
-  )
-}
-
-/** Site no ar: screenshot do desktop na moldura e a versão de celular sobreposta. */
-function Screens({
-  item,
-  dict,
-}: {
-  item: InterfaceProject
-  dict: Dictionary["interfaces"]
-}) {
-  const { desktop, mobile } = item.screenshots!
-  return (
-    <div className="relative pr-[14%] pb-[10%]">
-      <ViewportFrame route={item.route} status="200">
-        <Image
-          src={desktop}
-          alt={dict.screenshotDesktop.replace("{title}", item.title)}
-          width={1440}
-          height={900}
-          sizes="(min-width: 1024px) 560px, 92vw"
-          className="block h-auto w-full"
-        />
-      </ViewportFrame>
-      <div className="absolute right-0 bottom-0 w-[30%] overflow-hidden rounded-[14px] border-4 border-card bg-card shadow-[0_8px_24px_-12px_rgb(0_0_0/0.45)] ring-1 ring-border">
-        <Image
-          src={mobile}
-          alt={dict.screenshotMobile.replace("{title}", item.title)}
-          width={780}
-          height={1328}
-          sizes="(min-width: 1024px) 170px, 28vw"
-          className="block h-auto w-full"
-        />
-      </div>
-    </div>
   )
 }
