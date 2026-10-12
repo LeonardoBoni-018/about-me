@@ -25,77 +25,95 @@ export const projects: Project[] = [
       "typescript",
     ],
     summary: {
-      pt: "Sistema de restaurante estilo iFood: API em Spring Boot 4 para cardápio e pedidos, com área admin protegida e site em React.",
-      en: "An iFood-style restaurant system: a Spring Boot 4 API for menu and orders, with a protected admin area and a React site.",
+      pt: "Marketplace de delivery estilo iFood: API em Spring Boot 4 com várias lojas, cada uma com cardápio, pedidos e painel próprios, e um site em React onde o pedido fecha no WhatsApp.",
+      en: "An iFood-style delivery marketplace: a Spring Boot 4 API with many stores, each with its own menu, orders and panel, plus a React site where the order closes on WhatsApp.",
     },
     problem: {
-      pt: "Um restaurante precisa publicar o cardápio, receber pedidos sem exigir cadastro do cliente e dar à equipe uma área segura para gerenciar itens e o status de cada pedido.",
-      en: "A restaurant needs to publish its menu, take orders without forcing customers to sign up, and give staff a secure area to manage items and each order's status.",
+      pt: "Começou como o sistema de um restaurante só. Para virar marketplace, cada loja precisava de cardápio e pedidos próprios, os clientes podiam ter conta (ou pedir sem ela) e nenhum lojista podia enxergar os dados de outro.",
+      en: "It started as a single-restaurant system. To become a marketplace, every store needed its own menu and orders, customers could have an account (or order without one), and no store owner could see another's data.",
     },
     solution: {
-      pt: "API dividida em rotas públicas e administrativas, com autenticação JWT via Spring Security. O schema é versionado com Flyway, a documentação sai automaticamente no Swagger e os testes de integração sobem um PostgreSQL real com Testcontainers.",
-      en: "An API split into public and admin routes, with JWT auth via Spring Security. The schema is versioned with Flyway, docs are generated automatically in Swagger, and integration tests spin up a real PostgreSQL with Testcontainers.",
+      pt: "Uma migração Flyway (V7) levou o schema para multi-loja: usuários com papel, lojas com dono e slug, cardápio e pedidos por loja. O JWT carrega o papel (cliente ou loja) e as regras são negar por padrão; cada loja só altera o que é dela. Pedidos públicos são acompanhados por um UUID, para ninguém enumerar pedidos alheios, e login, cadastro e pedidos têm rate limit por IP.",
+      en: "A Flyway migration (V7) moved the schema to multi-store: users with roles, stores with an owner and a slug, menus and orders per store. The JWT carries the role (customer or store) and rules deny by default; each store only changes what it owns. Public orders are tracked by a UUID so nobody can enumerate other people's orders, and login, sign-up and ordering are rate-limited per IP.",
     },
     architecture: [
       {
         label: "Site (React)",
-        detail: { pt: "Cardápio e pedidos", en: "Menu and orders" },
+        detail: { pt: "Vitrine, sacola e painel", en: "Directory, bag and panel" },
       },
       {
         label: "Spring Boot 4",
-        detail: { pt: "Rotas públicas + admin JWT", en: "Public routes + JWT admin" },
+        detail: { pt: "JWT com papel por loja", en: "Role-aware JWT per store" },
       },
       {
         label: "PostgreSQL 16",
-        detail: { pt: "Schema via Flyway", en: "Schema via Flyway" },
+        detail: { pt: "Neon · schema via Flyway", en: "Neon · schema via Flyway" },
       },
       {
         label: "WhatsApp",
-        detail: { pt: "Confirmação do pedido", en: "Order confirmation" },
+        detail: { pt: "Fechamento do pedido", en: "Order checkout" },
       },
     ],
     endpoints: [
       {
         method: "GET",
-        path: "/public/menu",
-        description: { pt: "Cardápio paginado", en: "Paginated menu" },
+        path: "/public/restaurants",
+        description: {
+          pt: "Vitrine de lojas (busca, tipo de comida, paginada)",
+          en: "Store directory (search, cuisine, paginated)",
+        },
       },
       {
         method: "POST",
-        path: "/public/orders",
-        description: { pt: "Cria um pedido", en: "Creates an order" },
+        path: "/public/restaurants/{slug}/orders",
+        description: {
+          pt: "Cria pedido na loja (visitante ou cliente)",
+          en: "Places an order at a store (guest or customer)",
+        },
+      },
+      {
+        method: "GET",
+        path: "/public/orders/{trackingCode}",
+        description: {
+          pt: "Acompanha o pedido pelo código UUID",
+          en: "Tracks the order by its UUID code",
+        },
       },
       {
         method: "POST",
-        path: "/auth/login",
-        description: { pt: "Login admin (JWT)", en: "Admin login (JWT)" },
+        path: "/auth/register/store",
+        description: { pt: "Cadastro de loja + dono", en: "Store + owner sign-up" },
       },
       {
         method: "PUT",
-        path: "/admin/orders/{id}/status",
+        path: "/store/orders/{id}/status",
         description: {
-          pt: "Atualiza o status do pedido",
-          en: "Updates the order status",
+          pt: "A loja atualiza o status do pedido",
+          en: "The store updates the order status",
         },
       },
       {
         method: "DELETE",
-        path: "/admin/menu/{id}",
-        description: { pt: "Soft-delete de item", en: "Soft-deletes an item" },
+        path: "/store/menu/{id}",
+        description: {
+          pt: "Remoção lógica de item do próprio cardápio",
+          en: "Soft-deletes an item from the store's own menu",
+        },
       },
     ],
     results: {
       pt: [
-        "11 endpoints entre área pública e admin",
-        "5 migrações Flyway versionando o banco",
-        "Testes de integração com Testcontainers",
+        "Três perfis — visitante, cliente e loja — com regras por papel",
+        "7 migrações Flyway, da loja única ao multi-loja",
+        "No ar: API no Render, banco no Neon e site na Vercel",
       ],
       en: [
-        "11 endpoints across public and admin areas",
-        "5 Flyway migrations versioning the database",
-        "Integration tests with Testcontainers",
+        "Three profiles — guest, customer and store — with role-based rules",
+        "7 Flyway migrations, from a single store to multi-store",
+        "Live: API on Render, database on Neon and site on Vercel",
       ],
     },
+    demoUrl: "https://byfood-alpha.vercel.app",
     repoUrl: `${GH}/byFood-API`,
   },
   {

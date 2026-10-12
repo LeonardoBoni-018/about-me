@@ -89,7 +89,7 @@ test("abre o estudo de caso de um projeto", async ({ page }) => {
     .click()
   await expect(page).toHaveURL(/\/pt\/projects\/byfood$/)
   await expect(page.getByRole("heading", { level: 1 })).toContainText("byFood")
-  await expect(page.getByRole("table")).toContainText("/public/menu")
+  await expect(page.getByRole("table")).toContainText("/public/restaurants")
 })
 
 test("console de contato monta a requisição e mostra a resposta", async ({ page }) => {

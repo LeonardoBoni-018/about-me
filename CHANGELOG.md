@@ -7,6 +7,8 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Conteúdo
 
+- byFood descrito como é hoje: marketplace com várias lojas, perfis de cliente e loja, 7
+  migrações e deploy em Render, Neon e Vercel.
 - Dados reais do currículo, do LinkedIn e do GitHub: trajetória (Soft-Line, DT Network,
   HastyDEV, OzonioBras, Raízen), formação (ADS na Cruzeiro do Sul, técnico no SENAI), 15 cursos
   e certificações e 7 projetos com estudos de caso escritos a partir dos repositórios.
@@ -25,6 +27,9 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Adicionado
 
+- Capturas reais dos sites no ar para todos os fronts (byFood, Psyke e Agendamento, além do
+  Frames by Gi) e a entrega do Ensaio de Natal, feita para o estúdio da Giovana. O estudo de caso
+  de cada API mostra as capturas do front e o link do site.
 - Seção "Certificados" (`vault` · `certs.verify()`), separada da trajetória: totais em odômetro
   (certificados, horas, emissores), os principais como certificados X.509 que se "verificam" ao
   entrar na tela, e a lista completa com filtro por área.
