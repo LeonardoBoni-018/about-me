@@ -4,7 +4,8 @@ const GH = "https://github.com/LeonardoBoni-018"
 
 // Fonte: repositórios no GitHub (READMEs, commits, package.json) e os sites no ar, out/2026.
 // Só entram os fronts mais bem estruturados. Screenshots tiradas dos deploys de produção
-// (homepage de cada repositório); telas com login mostram a entrada do sistema.
+// (homepage de cada repositório). Telas internas só com contas de demonstração (dados fictícios);
+// sem uma, a captura mostra a tela de entrada do sistema.
 export const interfaces: InterfaceProject[] = [
   {
     slug: "frames-by-gi",
@@ -148,7 +149,7 @@ export const interfaces: InterfaceProject[] = [
       desktop: "/interfaces/psyke-desktop.jpg",
       mobile: "/interfaces/psyke-mobile.jpg",
     },
-    route: "psyke-front.vercel.app/login",
+    route: "psyke-front.vercel.app/dashboard",
   },
   {
     slug: "agendamento-front",
