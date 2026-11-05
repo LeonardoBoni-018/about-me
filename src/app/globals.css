@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+/* Protótipo: folhas presas na horizontal só com tela larga, alta o bastante e movimento liberado */
+@custom-variant pin (@media (min-width: 1024px) and (min-height: 760px) and (prefers-reduced-motion: no-preference));
 
 @theme inline {
   --color-background: var(--background);
@@ -361,5 +363,82 @@
   .verify-status[data-pending] .verify-valid {
     animation: none;
     opacity: 1;
+  }
+}
+
+/* ───────────────────────── Protótipo "folha de especificação" ─────────────────────────
+   Escopo próprio (.proto) para não mexer no site atual. Papel de prancheta + tinta preta e um
+   único sinal vermelhão. Claro por padrão: quem avalia um portfólio está no escritório, de dia. */
+.proto {
+  --p-paper: #eeebe3;
+  --p-sheet: #f7f5ef;
+  --p-ink: #121417;
+  --p-dim: #55595e;
+  --p-rule: #cdc8bc;
+  --p-signal: #d9431a;
+  --p-signal-ink: #ffffff;
+  --p-live: #1d7a4c;
+  background: var(--p-paper);
+  color: var(--p-ink);
+}
+.dark .proto {
+  --p-paper: #0f1113;
+  --p-sheet: #16191c;
+  --p-ink: #ebe8e0;
+  --p-dim: #9a9ea3;
+  --p-rule: #2b2f34;
+  --p-signal: #ff6b3d;
+  --p-signal-ink: #120a06;
+  --p-live: #4fd394;
+}
+.proto ::selection {
+  background: var(--p-signal);
+  color: var(--p-signal-ink);
+}
+.proto :focus-visible {
+  outline: 2px solid var(--p-signal);
+  outline-offset: 3px;
+}
+.proto a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+.proto .font-wide {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+.proto .tnum {
+  font-variant-numeric: tabular-nums;
+}
+/* Barra de rolagem da faixa de telas no mesmo traço das réguas */
+.proto .strip {
+  scrollbar-color: var(--p-ink) transparent;
+  scrollbar-width: thin;
+}
+/* Nome do hero: entra uma vez, revelado de baixo para cima pela régua (clip-path) */
+@keyframes proto-reveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(0.12em);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+.proto .reveal-line {
+  animation: proto-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .proto .reveal-line {
+    animation: none;
+  }
+}
+/* Índice retrátil: desce do topo como uma folha sendo puxada */
+@keyframes proto-drop {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }

@@ -7,6 +7,10 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 
 ### Conteúdo
 
+- Projetos novos publicados na Vercel: Nexo Assist (agent de service desk com Claude, Mastra e
+  um serviço de chamados em Hono), Cardápio do Bar do Marcelo (Spring Boot + React, em
+  bardomarcelo.com.br) e o site-portfólio do Kayo Marques, com capturas reais.
+
 - byFood descrito como é hoje: marketplace com várias lojas, perfis de cliente e loja, 7
   migrações e deploy em Render, Neon e Vercel.
 - Dados reais do currículo, do LinkedIn e do GitHub: trajetória (Soft-Line, DT Network,
@@ -26,6 +30,12 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
   ([ADR 0004](docs/adr/0004-conceito-ciclo-de-vida-da-requisicao.md)).
 
 ### Adicionado
+
+- Protótipo de layout em `/pt/prototipo` ("folha de especificação"): grafo 3D dos componentes
+  de todos os projetos (Three.js), índice editorial filtrável, folhas de especificação presas
+  na horizontal (GSAP ScrollTrigger), faixa de telas e índice retrátil.
+- Skills de projeto `impeccable` (regras anti-"cara de IA") e `design-references` (onde buscar
+  referências e como usá-las).
 
 - Capturas reais dos sites no ar para todos os fronts (byFood, Psyke e Agendamento, além do
   Frames by Gi) e a entrega do Ensaio de Natal, feita para o estúdio da Giovana. O estudo de caso

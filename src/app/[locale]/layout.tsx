@@ -5,8 +5,6 @@ import {
   IBM_Plex_Mono,
   IBM_Plex_Sans,
 } from "next/font/google"
-import { SiteFooter } from "@/components/layout/site-footer"
-import { SiteHeader } from "@/components/layout/site-header"
 import { ThemeSync } from "@/components/layout/theme-sync"
 import { Providers } from "@/components/providers"
 import { profile } from "@/content/profile"
@@ -113,13 +111,9 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
           {dict.a11y.skipToContent}
         </a>
         <ThemeSync locale={locale} />
-        <Providers>
-          <SiteHeader locale={locale} nav={dict.nav} a11y={dict.a11y} />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter dict={dict.footer} />
-        </Providers>
+        {/* Header, rodapé e <main> ficam nos layouts dos grupos: (site) é o site atual e (lab)
+            guarda protótipos com moldura própria. */}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

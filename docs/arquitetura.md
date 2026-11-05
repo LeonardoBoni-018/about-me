@@ -5,16 +5,19 @@ no build. O único trecho dinâmico é a Server Action do formulário de contato
 
 ## Rotas
 
-| Rota                          | Arquivo                                     | Observação                      |
-| ----------------------------- | ------------------------------------------- | ------------------------------- |
-| `/`                           | `src/proxy.ts`                              | redireciona para `/pt` ou `/en` |
-| `/[locale]`                   | `src/app/[locale]/page.tsx`                 | home com todas as seções        |
-| `/[locale]/projects/[slug]`   | `src/app/[locale]/projects/[slug]/page.tsx` | estudo de caso (SSG)            |
-| `/[locale]/opengraph-image`   | `src/app/[locale]/opengraph-image.tsx`      | imagem de compartilhamento      |
-| `/sitemap.xml`, `/robots.txt` | `src/app/sitemap.ts`, `robots.ts`           |                                 |
-| qualquer outra                | `src/app/global-not-found.tsx`              | 404 fora do layout por idioma   |
+| Rota                          | Arquivo                                            | Observação                      |
+| ----------------------------- | -------------------------------------------------- | ------------------------------- |
+| `/`                           | `src/proxy.ts`                                     | redireciona para `/pt` ou `/en` |
+| `/[locale]`                   | `src/app/[locale]/(site)/page.tsx`                 | home com todas as seções        |
+| `/[locale]/projects/[slug]`   | `src/app/[locale]/(site)/projects/[slug]/page.tsx` | estudo de caso (SSG)            |
+| `/[locale]/prototipo`         | `src/app/[locale]/(lab)/prototipo/page.tsx`        | protótipo de layout (noindex)   |
+| `/[locale]/opengraph-image`   | `src/app/[locale]/opengraph-image.tsx`             | imagem de compartilhamento      |
+| `/sitemap.xml`, `/robots.txt` | `src/app/sitemap.ts`, `robots.ts`                  |                                 |
+| qualquer outra                | `src/app/global-not-found.tsx`                     | 404 fora do layout por idioma   |
 
-O root layout fica em `src/app/[locale]/layout.tsx` (fontes, tema, header, footer, metadados).
+O root layout fica em `src/app/[locale]/layout.tsx` (fontes, tema, metadados). Header, `<main>` e
+rodapé do site ficam no grupo `(site)/layout.tsx`; o grupo `(lab)` guarda protótipos com moldura
+própria (sem header, trilho e rodapé do site).
 
 ## Idioma (i18n)
 
