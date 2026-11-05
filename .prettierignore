@@ -3,3 +3,5 @@ node_modules
 package-lock.json
 playwright-report
 test-results
+# Skill de terceiros (impeccable): mantida como veio do upstream
+.claude/skills/impeccable
