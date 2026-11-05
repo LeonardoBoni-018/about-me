@@ -380,6 +380,8 @@
   --p-live: #1d7a4c;
   background: var(--p-paper);
   color: var(--p-ink);
+  /* A abertura do hero começa com a fonte larga: o excesso é cortado, sem rolagem lateral */
+  overflow-x: clip;
 }
 .dark .proto {
   --p-paper: #0f1113;
@@ -414,24 +416,33 @@
   scrollbar-color: var(--p-ink) transparent;
   scrollbar-width: thin;
 }
-/* Nome do hero: entra uma vez, revelado de baixo para cima pela régua (clip-path) */
-@keyframes proto-reveal {
-  from {
-    clip-path: inset(100% 0 0 0);
-    transform: translateY(0.12em);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: none;
+/* Com JS e movimento liberado, o que a abertura do hero anima começa escondido (sem "piscar"
+   antes do GSAP assumir). Sem JS ou com movimento reduzido, nada fica escondido. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .proto [data-hero-name],
+  .js .proto [data-hero-fade] {
+    visibility: hidden;
   }
 }
-.proto .reveal-line {
-  animation: proto-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .proto .reveal-line {
-    animation: none;
+/* Pacote andando pelo fluxo da folha de especificação */
+@keyframes proto-packet {
+  0% {
+    left: 0;
+    opacity: 0;
   }
+  10%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 5px);
+    opacity: 0;
+  }
+}
+/* Faixa de telas: durante o arraste, nada de seleção nem cursor de link */
+.proto .is-dragging,
+.proto .is-dragging * {
+  cursor: grabbing;
 }
 /* Índice retrátil: desce do topo como uma folha sendo puxada */
 @keyframes proto-drop {

@@ -10,5 +10,16 @@ const archivo = Archivo({
 
 /** Moldura dos protótipos: sem o header, o trilho e o rodapé do site atual. */
 export default function LabLayout({ children }: LayoutProps<"/[locale]">) {
-  return <div className={cn(archivo.variable, "proto flex-1")}>{children}</div>
+  return (
+    <div className={cn(archivo.variable, "proto flex-1")}>
+      {/* Marca que há JS antes da primeira pintura: o CSS só esconde o que a abertura anima
+          quando o GSAP vai de fato rodar (ver .js em globals.css). */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: "document.documentElement.classList.add('js')",
+        }}
+      />
+      {children}
+    </div>
+  )
 }

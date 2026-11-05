@@ -11,6 +11,8 @@ interface TopologySceneProps {
   paths: { slug: string; title: string }[]
   label: string
   caption: string
+  /** Etiqueta do cursor contextual sobre a cena ("Girar"). */
+  cursorLabel: string
 }
 
 /**
@@ -19,7 +21,13 @@ interface TopologySceneProps {
  * Escolher um projeto acende o caminho dele. Movimento reduzido: cena estática, sem pacotes
  * andando e sem rotação automática (arrastar continua funcionando).
  */
-export function TopologyScene({ topology, paths, label, caption }: TopologySceneProps) {
+export function TopologyScene({
+  topology,
+  paths,
+  label,
+  caption,
+  cursorLabel,
+}: TopologySceneProps) {
   const mountRef = useRef<HTMLDivElement>(null)
   const labelsRef = useRef<HTMLDivElement>(null)
   const activeRef = useRef<string | null>(null)
@@ -100,10 +108,10 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
         const material = new THREE.MeshBasicMaterial({ color: palette.ink })
         const mesh = new THREE.Mesh(nodeGeometry, material)
         const size = 0.045 + Math.min(node.projects.length, 5) * 0.016
-        mesh.scale.setScalar(size)
+        mesh.scale.setScalar(reduced ? size : 0.0001)
         mesh.position.copy(positions.get(node.id)!)
         world.add(mesh)
-        return { node, mesh, material }
+        return { node, mesh, material, size }
       })
 
       // Arestas como arcos que saem da superfície (bezier quadrática empurrada para fora).
@@ -120,6 +128,7 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
           opacity: 0.7,
         })
         const line = new THREE.Line(geometry, material)
+        if (!reduced) geometry.setDrawRange(0, 0)
         world.add(line)
         return { edge, curve, material, geometry }
       })
@@ -219,6 +228,21 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
         needsRender = true
       }
 
+      // Abertura: os nós surgem um a um (do mais usado ao menos usado), depois as arestas se
+      // desenham e só então os pacotes começam a trafegar — o sistema "subindo".
+      let introStart = -1
+      const INTRO_NODES = 1.4
+      const INTRO_EDGES = 1.1
+      const easeOut = (x: number) => 1 - Math.pow(1 - Math.min(Math.max(x, 0), 1), 3)
+
+      // Parallax leve pelo ponteiro: a esfera "olha" para o mouse.
+      const tilt = { x: 0, y: 0, tx: 0, ty: 0 }
+      const onWindowMove = (e: PointerEvent) => {
+        tilt.tx = (e.clientY / window.innerHeight - 0.5) * 0.25
+        tilt.ty = (e.clientX / window.innerWidth - 0.5) * 0.35
+      }
+      if (!reduced) window.addEventListener("pointermove", onWindowMove)
+
       const tick = (time: number) => {
         frame = requestAnimationFrame(tick)
         if (!visible) return
@@ -227,7 +251,27 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
         needsRender = false
 
         if (!dragging && animate) world.rotation.y += velocity
+        if (animate) {
+          tilt.x += (tilt.tx - tilt.x) * 0.05
+          tilt.y += (tilt.ty - tilt.y) * 0.05
+          scene.rotation.x = tilt.x
+          scene.rotation.y = tilt.y
+        }
         paint()
+
+        let introDone = true
+        if (animate) {
+          if (introStart < 0) introStart = time / 1000
+          const elapsed = time / 1000 - introStart
+          nodeMeshes.forEach(({ mesh, size }, i) => {
+            const k = easeOut((elapsed - (i / n) * INTRO_NODES) / 0.5)
+            mesh.scale.setScalar(Math.max(size * k, 0.0001))
+          })
+          const e = easeOut((elapsed - INTRO_NODES * 0.7) / INTRO_EDGES)
+          for (const { geometry } of edgeCurves)
+            geometry.setDrawRange(0, Math.ceil(33 * e))
+          introDone = e >= 1
+        }
 
         const t = animate ? time / 1000 : 0
         for (const p of packets) {
@@ -239,7 +283,7 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
                 .find((m) => m.node.id === p.edge.to)!
                 .node.projects.includes(activeRef.current)
             : true
-          p.mesh.visible = on
+          p.mesh.visible = on && introDone
           p.curve.getPoint((p.phase + t * 0.18) % 1, p.mesh.position)
         }
 
@@ -247,7 +291,8 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
 
         // Rótulos acompanham os nós; os que estão "atrás" da esfera somem.
         world.updateMatrixWorld()
-        nodeMeshes.forEach(({ node, mesh }, i) => {
+        nodeMeshes.forEach(({ node, mesh, size: nodeSize }, i) => {
+          const grown = Math.min(mesh.scale.x / nodeSize, 1)
           tmp.copy(mesh.position).applyMatrix4(world.matrixWorld)
           const depth = tmp.z
           tmp.project(camera)
@@ -258,7 +303,8 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
           const on = current ? node.projects.includes(current) : false
           const front = depth > -0.4
           el.style.transform = `translate(${x + 8}px, ${y - 5}px)`
-          el.style.opacity = current ? (on ? "1" : "0.15") : front ? "0.9" : "0.2"
+          const base = current ? (on ? 1 : 0.15) : front ? 0.9 : 0.2
+          el.style.opacity = String(base * grown)
           el.style.color = on ? "var(--p-signal)" : "var(--p-ink)"
         })
       }
@@ -293,6 +339,7 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
 
       cleanup = () => {
         cancelAnimationFrame(frame)
+        window.removeEventListener("pointermove", onWindowMove)
         velocity = 0
         resizeObserver.disconnect()
         io.disconnect()
@@ -324,6 +371,7 @@ export function TopologyScene({ topology, paths, label, caption }: TopologyScene
         className="relative min-h-[340px] flex-1 overflow-hidden"
         role="img"
         aria-label={label}
+        data-cursor={cursorLabel}
       >
         <div ref={mountRef} className="absolute inset-0" />
         <div ref={labelsRef} aria-hidden="true" className="absolute inset-0" />

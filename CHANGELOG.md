@@ -34,6 +34,13 @@ Mudanças relevantes para quem visita ou mantém o site. Formato baseado em
 - Protótipo de layout em `/pt/prototipo` ("folha de especificação"): grafo 3D dos componentes
   de todos os projetos (Three.js), índice editorial filtrável, folhas de especificação presas
   na horizontal (GSAP ScrollTrigger), faixa de telas e índice retrátil.
+- Protótipo ganhou movimento: abertura do hero (letras sobem e a fonte condensa enquanto o
+  grafo se monta), rolagem suave (Lenis), títulos revelados por linha (SplitText), faixa de
+  tecnologias que reage ao scroll, índice com hover "carimbado", prévia com inércia e Flip no
+  filtro, folhas com régua de progresso e parallax, faixa de telas arrastável com inércia,
+  trajetória desenhada pelo scroll, rodapé em cortina, e-mail que rola letra a letra e cursor
+  contextual. Tudo degrada para estático com movimento reduzido.
+- Skills oficiais da GreenSock (`gsap-*`) para GSAP, ScrollTrigger, plugins e React.
 - Skills de projeto `impeccable` (regras anti-"cara de IA") e `design-references` (onde buscar
   referências e como usá-las).
 

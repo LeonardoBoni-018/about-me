@@ -44,15 +44,22 @@ Antes de abrir qualquer referência, saiba o que o projeto precisa dizer; depois
 
 ## 3. Bibliotecas de movimento e 3D
 
-| Biblioteca                                    | Quando usar                                                                    | Cuidados                                                                                                               |
-| --------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| **Motion** (`motion/react`, ex-Framer Motion) | Transições de estado em React, layout animations, presença (entrar/sair)       | Neste projeto: `import * as m from "motion/react-m"` (LazyMotion strict)                                               |
-| **GSAP + ScrollTrigger** (`gsap`)             | Linha do tempo ligada ao scroll, seção presa (pin), scrub, sequências precisas | Importe sob demanda no `useEffect`; use `gsap.matchMedia()` com `prefers-reduced-motion`; sempre `revert()` no cleanup |
-| **Three.js** (`three`)                        | Cena 3D com dado real (grafo, mapa, modelo do produto)                         | `import("three")` só no cliente; descarte geometrias/materiais; pause fora da tela; texto em HTML (acessível)          |
-| CSS (`@keyframes`, `clip-path`, scroll-snap)  | Revelações simples, faixas horizontais, primeiro viewport                      | Preferido no LCP: não depende de JS                                                                                    |
+| Biblioteca                                      | Quando usar                                                                    | Cuidados                                                                                                               |
+| ----------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **Motion** (`motion/react`, ex-Framer Motion)   | Transições de estado em React, layout animations, presença (entrar/sair)       | Neste projeto: `import * as m from "motion/react-m"` (LazyMotion strict)                                               |
+| **GSAP + ScrollTrigger** (`gsap`)               | Linha do tempo ligada ao scroll, seção presa (pin), scrub, sequências precisas | Importe sob demanda no `useEffect`; use `gsap.matchMedia()` com `prefers-reduced-motion`; sempre `revert()` no cleanup |
+| **Three.js** (`three`)                          | Cena 3D com dado real (grafo, mapa, modelo do produto)                         | `import("three")` só no cliente; descarte geometrias/materiais; pause fora da tela; texto em HTML (acessível)          |
+| **Lenis** (`lenis`)                             | Rolagem suave padrão dos sites premiados, ligada ao ScrollTrigger              | Só com movimento liberado; `lenis.on("scroll", ScrollTrigger.update)` + `gsap.ticker`                                  |
+| **GSAP SplitText / Flip / Draggable + Inertia** | Texto por linha/letra com máscara, reordenação suave, arrastar com inércia     | Todos gratuitos no pacote `gsap`; ver skills `gsap-plugins` e `gsap-react` (useGSAP)                                   |
+| CSS (`@keyframes`, `clip-path`, scroll-snap)    | Revelações simples, faixas horizontais, primeiro viewport                      | Preferido no LCP: não depende de JS                                                                                    |
 
-Exemplo vivo de cada uma: `src/app/[locale]/(lab)/prototipo` (Three.js no grafo do hero, GSAP
-nas folhas presas, CSS na revelação do nome e na faixa de telas).
+Exemplo vivo de cada uma: `src/app/[locale]/(lab)/prototipo` e `src/components/prototype/`
+(Three.js no grafo, GSAP + Lenis em `proto-motion.tsx`, Flip no índice, Draggable na faixa de
+telas, CSS no e-mail do rodapé).
+
+Bibliotecas de componentes animados para pesquisar ideias (copiar o código-fonte e adaptar ao
+mundo do projeto, nunca colar o visual pronto): Motion Primitives, Magic UI, Aceternity UI,
+React Bits (licença MIT + Commons Clause), shadcn/ui. Checar licença antes de usar.
 
 ## 4. Proibido ao traduzir uma referência
 

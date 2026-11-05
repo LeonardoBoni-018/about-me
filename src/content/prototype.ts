@@ -35,8 +35,13 @@ export const prototypeCopy = {
       pt: "Grafo 3D dos componentes dos meus projetos",
       en: "3D graph of the components in my projects",
     },
+    drag: { pt: "Girar", en: "Rotate" },
     live: { pt: "sistemas no ar", en: "systems live" },
     repos: { pt: "repositórios descritos aqui", en: "repositories described here" },
+  },
+  marquee: {
+    pt: "Tecnologias usadas nos projetos",
+    en: "Technologies used in the projects",
   },
   index: {
     title: {
@@ -77,9 +82,10 @@ export const prototypeCopy = {
   screens: {
     title: { pt: "As telas na ponta", en: "The screens at the edge" },
     hint: {
-      pt: "Capturas dos deploys de produção. Role para o lado.",
-      en: "Captures from the production deploys. Scroll sideways.",
+      pt: "Capturas dos deploys de produção. Arraste ou role para o lado.",
+      en: "Captures from the production deploys. Drag or scroll sideways.",
     },
+    drag: { pt: "Arrastar", en: "Drag" },
   },
   log: {
     title: { pt: "Da solda de placas às APIs", en: "From soldering boards to APIs" },
@@ -90,6 +96,7 @@ export const prototypeCopy = {
       pt: "Tem um sistema para colocar de pé?",
       en: "Got a system to get on its feet?",
     },
+    write: { pt: "Escrever", en: "Write" },
     copy: { pt: "Copiar e-mail", en: "Copy email" },
     copied: { pt: "Copiado", en: "Copied" },
   },
