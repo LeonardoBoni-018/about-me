@@ -75,7 +75,7 @@ export interface Project {
   year: number
   summary: Localized
   /** Tecnologia principal, usada no filtro da seção de projetos. */
-  language: "java" | "go" | "csharp"
+  language: "java" | "go" | "csharp" | "typescript"
   tech: TechId[]
   featured?: boolean
   problem: Localized

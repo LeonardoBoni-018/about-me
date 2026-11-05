@@ -8,6 +8,114 @@ const GH = "https://github.com/LeonardoBoni-018"
 // sem uma, a captura mostra a tela de entrada do sistema.
 export const interfaces: InterfaceProject[] = [
   {
+    slug: "nexo-assist-web",
+    title: "Nexo Assist · chat e console",
+    year: 2026,
+    kind: "webapp",
+    apiSlug: "nexo-assist",
+    summary: {
+      pt: "As duas telas do Nexo Assist: o chat onde o funcionário conversa com o agent e o console onde o analista assume, responde e devolve a conversa.",
+      en: "Nexo Assist's two screens: the chat where employees talk to the agent and the console where analysts take over, reply and hand the conversation back.",
+    },
+    highlights: {
+      pt: [
+        "Resposta chegando por SSE: etapas, texto e cards em tempo real",
+        'Botão "Por quê?" abre a decisão do agent, com confiança e etapas',
+        "Rascunho de chamado que só é gravado com o clique em Confirmar",
+        "Contas de demonstração na tela de login: qualquer senha funciona",
+      ],
+      en: [
+        "Replies streamed over SSE: steps, text and cards in real time",
+        'A "Why?" button opens the agent\'s decision, with confidence and steps',
+        "Ticket drafts only get written when the user clicks Confirm",
+        "Demo accounts on the login screen: any password works",
+      ],
+    },
+    tech: ["nextjs", "react", "typescript", "tailwind", "sse"],
+    repoUrl: `${GH}/Nexo-Assist`,
+    demoUrl: "https://nexo-assist-seven.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/nexo-assist-desktop.jpg",
+      mobile: "/interfaces/nexo-assist-mobile.jpg",
+    },
+    route: "nexo-assist-seven.vercel.app/login",
+  },
+  {
+    slug: "bar-do-marcelo-site",
+    title: "Bar do Marcelo · cardápio",
+    year: 2026,
+    kind: "webapp",
+    apiSlug: "bar-do-marcelo",
+    client: { pt: "cliente real · no ar", en: "real client · live" },
+    summary: {
+      pt: "O cardápio que o cliente do bar abre no celular, com busca e categorias, e o painel onde o dono cuida dos itens e das fotos.",
+      en: "The menu the bar's customers open on their phones, with search and categories, and the panel where the owner manages items and photos.",
+    },
+    highlights: {
+      pt: [
+        "Mostra se a cozinha está aberta e quando abre de novo",
+        "Miniaturas leves nas listas do celular; foto grande só no detalhe",
+        "Painel do dono com busca, filtros e formulário validado com Zod",
+        "135 testes e E2E em desktop, celular e celular pequeno",
+      ],
+      en: [
+        "Shows whether the kitchen is open and when it opens again",
+        "Light thumbnails in mobile lists; the full photo only on the detail view",
+        "Owner panel with search, filters and a Zod-validated form",
+        "135 tests and E2E on desktop, phone and small phone",
+      ],
+    },
+    tech: [
+      "react",
+      "typescript",
+      "vite",
+      "tailwind",
+      "tanstackquery",
+      "reacthookform",
+      "zod",
+      "playwright",
+    ],
+    repoUrl: `${GH}/Card-pio-Bar-do-Marcelo`,
+    demoUrl: "https://bardomarcelo.com.br",
+    screenshots: {
+      desktop: "/interfaces/bar-do-marcelo-desktop.jpg",
+      mobile: "/interfaces/bar-do-marcelo-mobile.jpg",
+    },
+    route: "bardomarcelo.com.br",
+  },
+  {
+    slug: "kayo-marques",
+    title: "Kayo Marques · Storyframe",
+    year: 2026,
+    kind: "site",
+    summary: {
+      pt: "Site-portfólio do Kayo Marques, videomaker e fotógrafo: a página inteira fala a língua dos stories do Instagram, de onde vêm os clientes dele.",
+      en: "A portfolio site for Kayo Marques, a videomaker and photographer: the whole page speaks the language of Instagram stories, where his clients come from.",
+    },
+    highlights: {
+      pt: [
+        "Um movimento por seção, nenhum repetido, com GSAP ScrollTrigger e Motion",
+        "Slider de bruto × editado com clip-path, para fotos ou dois vídeos",
+        "Agenda com calendário: o dia escolhido vai direto para o formulário",
+        "Versão simples em /simples e tudo estático com movimento reduzido",
+      ],
+      en: [
+        "One motion per section, none repeated, with GSAP ScrollTrigger and Motion",
+        "A raw × edited slider with clip-path, for photos or two videos",
+        "A booking calendar: the chosen day goes straight into the form",
+        "A simple version at /simples, and everything static with reduced motion",
+      ],
+    },
+    tech: ["react", "javascript", "vite", "gsap", "motion"],
+    repoUrl: `${GH}/Portifolio-Kayo-Marques`,
+    demoUrl: "https://kayo-marques.vercel.app",
+    screenshots: {
+      desktop: "/interfaces/kayo-desktop.jpg",
+      mobile: "/interfaces/kayo-mobile.jpg",
+    },
+    route: "kayo-marques.vercel.app",
+  },
+  {
     slug: "frames-by-gi",
     title: "Frames by Gi",
     year: 2026,

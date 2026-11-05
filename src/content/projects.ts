@@ -6,6 +6,193 @@ const GH = "https://github.com/LeonardoBoni-018"
 // Os "resultados" descrevem o que cada projeto implementa — sem métricas inventadas.
 export const projects: Project[] = [
   {
+    slug: "nexo-assist",
+    title: "Nexo Assist",
+    year: 2026,
+    language: "typescript",
+    featured: true,
+    tech: [
+      "typescript",
+      "nextjs",
+      "claude",
+      "mastra",
+      "hono",
+      "postgresql",
+      "neon",
+      "zod",
+      "sse",
+      "vitest",
+    ],
+    summary: {
+      pt: "Agent de atendimento para um service desk de TI: o funcionário descreve o problema num chat e o agent responde com a central de ajuda, consulta ou abre chamados, ou chama um analista.",
+      en: "A support agent for an IT service desk: employees describe the problem in a chat and the agent answers from the help center, looks up or opens tickets, or calls in an analyst.",
+    },
+    problem: {
+      pt: "Um modelo de linguagem entende bem o pedido, mas não pode ser o responsável por regras que não podem falhar: prioridade, prazo, duplicidade, privacidade e o que de fato é gravado no sistema de chamados.",
+      en: "A language model understands the request well, but it can't own the rules that must never fail: priority, deadlines, duplicates, privacy and what actually gets written to the ticket system.",
+    },
+    solution: {
+      pt: "Dividi o trabalho: o modelo (Claude, via Mastra, com 9 ferramentas) escolhe a ação e escreve; o código calcula prioridade e SLA em funções puras, recusa rascunho duplicado e só grava quando o funcionário clica em Confirmar. Abaixo de 40% de confiança o servidor transfere para um analista. O sistema de chamados é um serviço separado em Hono, com banco próprio, acessado só por HTTP e com falhas simuladas do legado.",
+      en: "I split the work: the model (Claude, through Mastra, with 9 tools) picks the action and writes; code computes priority and SLA in pure functions, refuses duplicate drafts and only writes when the employee clicks Confirm. Below 40% confidence the server hands off to an analyst. The ticket system is a separate Hono service with its own database, reached only over HTTP, with simulated legacy failures.",
+    },
+    architecture: [
+      {
+        label: "Next.js",
+        detail: { pt: "Chat e console via SSE", en: "Chat and console over SSE" },
+      },
+      {
+        label: "Agent (Mastra)",
+        detail: { pt: "Claude + 9 ferramentas", en: "Claude + 9 tools" },
+      },
+      {
+        label: "Regras",
+        detail: { pt: "Prioridade, SLA, duplicidade", en: "Priority, SLA, duplicates" },
+      },
+      {
+        label: "Chamados (Hono)",
+        detail: { pt: "Serviço separado, banco próprio", en: "Separate service, own DB" },
+      },
+      {
+        label: "Neon",
+        detail: { pt: "Postgres · PGlite no local", en: "Postgres · PGlite locally" },
+      },
+    ],
+    endpoints: [
+      {
+        method: "POST",
+        path: "/api/chat",
+        description: {
+          pt: "Um turno do agent, transmitido por SSE",
+          en: "One agent turn, streamed over SSE",
+        },
+      },
+      {
+        method: "POST",
+        path: "/api/drafts/{id}/confirm",
+        description: {
+          pt: "Só o clique do funcionário grava o chamado",
+          en: "Only the employee's click writes the ticket",
+        },
+      },
+      {
+        method: "GET",
+        path: "/tickets?requester={email}",
+        description: {
+          pt: "Serviço de chamados: 404 para chamado de outra pessoa",
+          en: "Ticket service: 404 for someone else's ticket",
+        },
+      },
+    ],
+    results: {
+      pt: [
+        'Painel "Por quê?" com ação, confiança, etapas, tokens e custo de cada turno',
+        "43 testes, com turnos completos rodando contra um modelo roteirizado",
+        "No ar: dois projetos na Vercel e dois bancos no Neon, em planos gratuitos",
+      ],
+      en: [
+        'A "Why?" panel with the action, confidence, steps, tokens and cost of every turn',
+        "43 tests, including full turns run against a scripted model",
+        "Live: two Vercel projects and two Neon databases, on free plans",
+      ],
+    },
+    demoUrl: "https://nexo-assist-seven.vercel.app",
+    repoUrl: `${GH}/Nexo-Assist`,
+  },
+  {
+    slug: "bar-do-marcelo",
+    title: "Cardápio · Bar do Marcelo",
+    year: 2026,
+    language: "java",
+    tech: [
+      "java",
+      "springboot",
+      "springsecurity",
+      "jwt",
+      "postgresql",
+      "flyway",
+      "neon",
+      "openapi",
+      "docker",
+      "react",
+      "typescript",
+      "playwright",
+    ],
+    summary: {
+      pt: "Cardápio digital de um bar de verdade: página pública com fotos e preços e uma área restrita onde o dono inclui, edita e tira itens do ar.",
+      en: "A digital menu for a real bar: a public page with photos and prices, and a private area where the owner adds, edits and removes items.",
+    },
+    problem: {
+      pt: "Tudo em planos gratuitos: o disco do Render some a cada deploy, a API dorme depois de 15 minutos e o Neon free tem pouco espaço — e o cliente abre o cardápio pelo celular, na mesa.",
+      en: "Everything on free plans: Render's disk is wiped on every deploy, the API sleeps after 15 minutes and Neon's free tier has little space — and customers open the menu on their phones, at the table.",
+    },
+    solution: {
+      pt: "Spring Boot 3.5 com JWT e Flyway. As fotos ficam no banco, reduzidas a 1200 px com miniatura de 480 px, e uploads abandonados são apagados por uma rotina diária. A Vercel faz rewrite de /api para o Render e guarda as imagens na CDN; o painel faz ping para manter a API acordada. Login limitado a 5 falhas a cada 15 minutos por IP.",
+      en: "Spring Boot 3.5 with JWT and Flyway. Photos live in the database, resized to 1200 px with a 480 px thumbnail, and abandoned uploads are cleaned up by a daily job. Vercel rewrites /api to Render and caches images on its CDN; the panel pings the API to keep it awake. Login is limited to 5 failures per 15 minutes per IP.",
+    },
+    architecture: [
+      {
+        label: "Site (React)",
+        detail: {
+          pt: "Vercel · bardomarcelo.com.br",
+          en: "Vercel · bardomarcelo.com.br",
+        },
+      },
+      {
+        label: "Spring Boot",
+        detail: { pt: "Render · JWT + cache", en: "Render · JWT + cache" },
+      },
+      {
+        label: "PostgreSQL",
+        detail: { pt: "Neon · fotos no banco", en: "Neon · photos in the DB" },
+      },
+    ],
+    endpoints: [
+      {
+        method: "GET",
+        path: "/api/menu",
+        description: {
+          pt: "Cardápio agrupado por categoria",
+          en: "Menu grouped by category",
+        },
+      },
+      {
+        method: "GET",
+        path: "/api/images/{file}?size=thumb",
+        description: {
+          pt: "Miniatura de 480 px, cache de 1 ano",
+          en: "480 px thumbnail, cached for a year",
+        },
+      },
+      {
+        method: "POST",
+        path: "/api/auth/login",
+        description: {
+          pt: "Login do dono, com limite por IP",
+          en: "Owner login, rate-limited per IP",
+        },
+      },
+      {
+        method: "PUT",
+        path: "/api/admin/items/{id}",
+        description: { pt: "Edita um item do cardápio", en: "Edits a menu item" },
+      },
+    ],
+    results: {
+      pt: [
+        "94 testes no back (cobertura mínima de 85%) e 135 no front",
+        "E2E com Playwright contra a API real, em desktop e celular",
+        "No ar em domínio próprio: bardomarcelo.com.br",
+      ],
+      en: [
+        "94 back-end tests (85% minimum coverage) and 135 front-end tests",
+        "Playwright E2E against the real API, on desktop and mobile",
+        "Live on its own domain: bardomarcelo.com.br",
+      ],
+    },
+    demoUrl: "https://bardomarcelo.com.br",
+    repoUrl: `${GH}/Card-pio-Bar-do-Marcelo`,
+  },
+  {
     slug: "byfood",
     title: "byFood",
     year: 2026,

@@ -71,6 +71,14 @@ export const tech = {
   recharts: "Recharts",
   fullcalendar: "FullCalendar",
   sse: "Server-Sent Events",
+  nextjs: "Next.js",
+  claude: "Claude API",
+  mastra: "Mastra",
+  hono: "Hono",
+  neon: "Neon",
+  playwright: "Playwright",
+  gsap: "GSAP",
+  threejs: "Three.js",
 } as const satisfies Record<string, string>
 
 export type TechId = keyof typeof tech
